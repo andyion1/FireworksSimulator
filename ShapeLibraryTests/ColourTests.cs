@@ -42,4 +42,17 @@ public sealed class ColourTests
         Assert.AreEqual(50, result.Green);
         Assert.AreEqual(0, result.Blue);
     }
+
+    [TestMethod]
+    public void TestMultiplicationOperator()
+    {
+        var colour1 = new Colour(10, 20, 30);
+        var colour2 = new Colour(10, 20, 10);
+
+        var result = colour1 * colour2;
+
+        Assert.AreEqual(100, result.Red);
+        Assert.AreEqual(255, result.Green);
+        Assert.AreEqual(255, result.Blue);
+    }
 }
