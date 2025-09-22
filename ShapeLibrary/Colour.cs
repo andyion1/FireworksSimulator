@@ -1,4 +1,6 @@
-﻿namespace ShapeLibrary;
+﻿using System.Drawing;
+
+namespace ShapeLibrary;
 
 public struct Colour
 {
@@ -8,12 +10,12 @@ public struct Colour
     
     public Colour(int red, int green, int blue)
     {
-        Red = ClampColorValue(Red);
-        Green = ClampColorValue(Green);
-        Blue = ClampColorValue(Blue);
+        Red = ClampColorValue(red);
+        Green = ClampColorValue(green);
+        Blue = ClampColorValue(blue);
     }
 
-    public int ClampColorValue(int colorValue)
+    public static int ClampColorValue(int colorValue)
     {
         if (colorValue < 0)
         {
@@ -25,6 +27,41 @@ public struct Colour
         }
 
         return colorValue;
-
     }
+
+    public static Colour operator +(Colour colour1, Colour colour2) {
+        return new Colour
+            (ClampColorValue(colour1.Red + colour2.Red), 
+            ClampColorValue(colour1.Green + colour2.Green),
+            ClampColorValue(colour1.Blue + colour2.Blue)
+            );
+    }
+
+    public static Colour operator -(Colour colour1, Colour colour2) {
+        return new Colour
+            (ClampColorValue(colour1.Red - colour2.Red),
+            ClampColorValue(colour1.Green - colour2.Green),
+            ClampColorValue(colour1.Blue - colour2.Blue)
+            );
+    }
+
+    public static Colour operator *(Colour colour1, Colour colour2)
+    {
+        return new Colour
+            (ClampColorValue(colour1.Red * colour2.Red),
+            ClampColorValue(colour1.Green * colour2.Green),
+            ClampColorValue(colour1.Blue * colour2.Blue)
+            );
+    }
+
+    public static bool operator ==(Colour colour1, Colour colour2)
+    {
+        return colour1.Red == colour2.Red && colour1.Green == colour2.Green && colour1.Blue == colour2.Blue;
+    }
+
+    public static bool operator !=(Colour colour1, Colour colour2)
+    {
+        return !(colour1 == colour2);
+    }
+
 }
