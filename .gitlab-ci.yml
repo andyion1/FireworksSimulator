@@ -4,7 +4,6 @@ stages:
   - build
   - test
 
-
 build:debug:
   stage: build
   script:
@@ -16,7 +15,7 @@ build:release:
   script:
     - dotnet restore
     - dotnet build --configuration Release
-    - dotnet publish BouncingBallGame/BouncingBallGame.csproj -c Release -r win-x64 --self-contained false -o artifacts
+    - dotnet publish FireworksSimulator/FireworksSimulator.csproj -c Release -r win-x64 --self-contained false -o artifacts
   artifacts:
     paths:
       - artifacts/
@@ -26,7 +25,7 @@ test:
   script:
     - dotnet tool install --global trx2junit
     - export PATH="$PATH:/root/.dotnet/tools"
-    - dotnet test --logger "trx;LogFileName=test_results.trx" --results-directory "TestResults"
+    - dotnet test ShapeLibraryTests/ShapeLibraryTests.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "TestResults"
     - trx2junit TestResults/test_results.trx
   artifacts:
     when: always
