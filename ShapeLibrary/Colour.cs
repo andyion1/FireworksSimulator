@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 
 namespace ShapeLibrary;
 
@@ -62,6 +63,26 @@ public struct Colour
     public static bool operator !=(Colour colour1, Colour colour2)
     {
         return !(colour1 == colour2);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is Colour colour)
+        {
+            return this == colour;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return (Red, Green, Blue).GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return $"({Red}, {Green}, {Blue})";
     }
 
 }
