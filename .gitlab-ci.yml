@@ -1,0 +1,33 @@
+image: mcr.microsoft.com/dotnet/sdk:8.0
+
+stages:
+  - build
+  - test
+
+build:debug:
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet build --configuration Debug
+
+build:release:
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet build --configuration Release
+    - dotnet publish FireworksSimulator/FireworksSimulator.csproj -c Release -r win-x64 --self-contained false -o artifacts
+  artifacts:
+    paths:
+      - artifacts/
+
+test:
+  stage: test
+  script:
+    - dotnet tool install --global trx2junit
+    - export PATH="$PATH:/root/.dotnet/tools"
+    - dotnet test ShapeLibraryTests/ShapeLibraryTests.csproj --logger "trx;LogFileName=test_results.trx" --results-directory "TestResults"
+    - trx2junit TestResults/test_results.trx
+  artifacts:
+    when: always
+    reports:
+      junit: TestResults/test_results.xml
