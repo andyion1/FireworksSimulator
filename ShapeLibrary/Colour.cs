@@ -6,9 +6,11 @@ public struct Colour
     public int Green { get; }
     public int Blue { get; }
     
-    public Colour()
+    public Colour(int red, int green, int blue)
     {
-
+        Red = ClampColorValue(Red);
+        Green = ClampColorValue(Green);
+        Blue = ClampColorValue(Blue);
     }
 
     public int ClampColorValue(int colorValue)
