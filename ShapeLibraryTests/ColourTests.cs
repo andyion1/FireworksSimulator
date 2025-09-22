@@ -73,4 +73,14 @@ public sealed class ColourTests
 
         Assert.IsTrue(colour1 != colour2);
     }
+
+    [TestMethod]
+    public void TestToString()
+    {
+        var colour = new Colour(12, 34, 56);
+
+        var result = colour.ToString();
+
+        Assert.AreEqual("(12, 34, 56)", result);
+    }
 }
