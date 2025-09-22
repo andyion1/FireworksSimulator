@@ -55,4 +55,13 @@ public sealed class ColourTests
         Assert.AreEqual(255, result.Green);
         Assert.AreEqual(255, result.Blue);
     }
+
+    [TestMethod]
+    public void TestEqualOperator()
+    {
+        var colour1 = new Colour(100, 150, 200);
+        var colour2 = new Colour(100, 150, 200);
+
+        Assert.IsTrue(colour1 == colour2);
+    }
 }
