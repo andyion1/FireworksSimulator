@@ -29,4 +29,17 @@ public sealed class ColourTests
         Assert.AreEqual(255, result.Green);
         Assert.AreEqual(255, result.Blue);
     }
+
+    [TestMethod]
+    public void TestSubstractionOperator()
+    {
+        var colour1 = new Colour(100, 100, 100);
+        var colour2 = new Colour(150, 50, 200);
+
+        var result = colour1 - colour2;
+
+        Assert.AreEqual(0, result.Red);
+        Assert.AreEqual(50, result.Green);
+        Assert.AreEqual(0, result.Blue);
+    }
 }
