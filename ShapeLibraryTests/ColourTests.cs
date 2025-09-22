@@ -57,11 +57,20 @@ public sealed class ColourTests
     }
 
     [TestMethod]
-    public void TestEqualOperator()
+    public void TestEqualityOperator()
     {
         var colour1 = new Colour(100, 150, 200);
         var colour2 = new Colour(100, 150, 200);
 
         Assert.IsTrue(colour1 == colour2);
+    }
+
+    [TestMethod]
+    public void TestInequalityOperator()
+    {
+        var colour1 = new Colour(100, 150, 200);
+        var colour2 = new Colour(200, 150, 100);
+
+        Assert.IsTrue(colour1 != colour2);
     }
 }
