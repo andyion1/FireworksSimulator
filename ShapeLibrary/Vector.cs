@@ -79,7 +79,7 @@ namespace ShapeLibrary
 
         public override string ToString()
         {
-            return $"{this.X}, {this.Y}";
+            return $"({this.X}, {this.Y})";
         }
     }
 }
