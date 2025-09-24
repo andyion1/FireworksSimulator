@@ -12,7 +12,7 @@ namespace ShapeLibraryTests
     public sealed class VectorTests
     {
         [TestMethod]
-        public void TestConstructor_Initialization()
+        public void TestConstructorInitialization()
         {
             Vector v = new Vector(3.5f, -2f);
 
@@ -21,7 +21,7 @@ namespace ShapeLibraryTests
         }
 
         [TestMethod]
-        public void TestVector_ReferencingValues()
+        public void TestVectorReferencingValues()
         {
             Vector original = new Vector(1, 2);
 
@@ -32,7 +32,7 @@ namespace ShapeLibraryTests
         }
 
         [TestMethod]
-        public void ToString_ShowsFormattedValues()
+        public void TestToStringShowsCorrectValue()
         {
             Vector vector = new Vector(5, 6);
 
@@ -42,7 +42,7 @@ namespace ShapeLibraryTests
         }
 
         [TestMethod]
-        public void Addition_Works()
+        public void TestAdditionWorks()
         {
             Vector vector1 = new Vector(1, 2);
             Vector vector2 = new Vector(3, 4);
@@ -54,12 +54,12 @@ namespace ShapeLibraryTests
         }
 
         [TestMethod]
-        public void Subtraction_Works()
+        public void TestSubstractionWorks()
         {
-            var vector1 = new Vector(5, 6);
-            var vector2 = new Vector(2, 3);
+            Vector vector1 = new Vector(5, 6);
+            Vector vector2 = new Vector(2, 3);
 
-            var result = vector1 - vector2;
+            Vector result = vector1 - vector2;
 
             Assert.AreEqual(3, result.X);
             Assert.AreEqual(3, result.Y);
