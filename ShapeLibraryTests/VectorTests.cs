@@ -30,5 +30,15 @@ namespace ShapeLibraryTests
             Assert.AreEqual(original.X, copy.X);
             Assert.AreEqual(original.Y, copy.Y);
         }
+
+        [TestMethod]
+        public void ToString_ShowsFormattedValues()
+        {
+            Vector vector = new Vector(5, 6);
+
+            var result = vector.ToString();
+
+            Assert.AreEqual("(5, 6)", result);
+        }
     }
 }
