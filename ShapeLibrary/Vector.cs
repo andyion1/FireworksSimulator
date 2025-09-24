@@ -33,10 +33,15 @@ namespace ShapeLibrary
             return new Vector(vector1.X - vector2.X, vector1.Y - vector2.Y);
         }
 
-        public static Vector operator *(Vector vector1, Vector vector2)
+        public static Vector operator *(Vector vector, float scalar)
         {
-            return new Vector(vector1.X * vector2.X, vector1.Y * vector2.Y);
+            return new Vector(vector.X * scalar, vector.Y * scalar);
         }
-        
+
+        public static Vector operator /(Vector vector, float scalar)
+        {
+            return new Vector(vector.X / scalar, vector.Y / scalar);
+        }
+
     }
 }
