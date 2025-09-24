@@ -68,5 +68,13 @@ namespace ShapeLibrary
             return magnitude;
         }
 
+        public static Vector Normalize(Vector vector)
+        {
+            float vectorMagnitude = Magnitude(vector);
+
+            Vector normalizedVector = vector / vectorMagnitude;
+
+            return normalizedVector;
+        }
     }
 }
