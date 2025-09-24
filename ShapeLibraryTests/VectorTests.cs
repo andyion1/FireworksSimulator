@@ -14,9 +14,21 @@ namespace ShapeLibraryTests
         [TestMethod]
         public void TestConstructorInitialization()
         {
-            var v = new Vector(3.5f, -2f);
+            Vector v = new Vector(3.5f, -2f);
+
             Assert.AreEqual(3.5f, v.X);
             Assert.AreEqual(-2f, v.Y);
+        }
+
+        [TestMethod]
+        public void TestVectorReferencingValues()
+        {
+            Vector original = new Vector(1, 2);
+
+            Vector copy = new Vector(original);
+
+            Assert.AreEqual(original.X, copy.X);
+            Assert.AreEqual(original.Y, copy.Y);
         }
     }
 }
