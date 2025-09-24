@@ -16,5 +16,11 @@ namespace ShapeLibrary
             this.X = x;
             this.Y = y;
         }
+
+        public Vector(Vector vector)
+        {
+            this.X = vector.X;
+            this.Y = vector.Y;
+        }
     }
 }
