@@ -49,8 +49,8 @@ namespace ShapeLibraryTests
 
             Vector result = vector1 + vector2;
 
-            Assert.AreEqual(4, result.X);
-            Assert.AreEqual(6, result.Y);
+            Assert.AreEqual(4f, result.X);
+            Assert.AreEqual(6f, result.Y);
         }
 
         [TestMethod]
@@ -61,8 +61,8 @@ namespace ShapeLibraryTests
 
             Vector result = vector1 - vector2;
 
-            Assert.AreEqual(3, result.X);
-            Assert.AreEqual(3, result.Y);
+            Assert.AreEqual(3f, result.X);
+            Assert.AreEqual(3f, result.Y);
         }
 
         [TestMethod]
@@ -72,8 +72,8 @@ namespace ShapeLibraryTests
 
             Vector result = vector * 2f;
 
-            Assert.AreEqual(4, result.X);
-            Assert.AreEqual(6, result.Y);
+            Assert.AreEqual(4f, result.X);
+            Assert.AreEqual(6f, result.Y);
         }
 
         [TestMethod]
@@ -83,8 +83,8 @@ namespace ShapeLibraryTests
 
             Vector result = vector / 2f;
 
-            Assert.AreEqual(2, result.X);
-            Assert.AreEqual(4, result.Y);
+            Assert.AreEqual(2f, result.X);
+            Assert.AreEqual(4f, result.Y);
         }
 
         [TestMethod]
@@ -92,10 +92,30 @@ namespace ShapeLibraryTests
         {
             Vector vector = new Vector(4, 8);
 
-            Vector result = vector / 2f;
+            Assert.ThrowsException<DivideByZeroException>(() => vector / 0f);
+        }
 
-            Assert.AreEqual(2, result.X);
-            Assert.AreEqual(4, result.Y);
+
+        [TestMethod]
+        public void TestMagnitudeWorks()
+        {
+            Vector vector = new Vector(3, 4);
+
+            float result = Vector.Magnitude(vector);
+
+            Assert.AreEqual(5f, result);
+        }
+
+        [TestMethod]
+        public void TestNormalizationWorks()
+        {
+            Vector vector = new Vector(10, 0);
+
+            Vector result = Vector.Normalize(vector);
+
+            Assert.AreEqual(1f, result.X);
+            Assert.AreEqual(0f, result.Y);
+            Assert.AreEqual(1f, Vector.Magnitude(result));
         }
 
     }
