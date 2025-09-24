@@ -72,6 +72,11 @@ namespace ShapeLibrary
         {
             float vectorMagnitude = Magnitude(vector);
 
+            if (vectorMagnitude == 0)
+            {
+                return new Vector(0, 0);
+            }
+
             Vector normalizedVector = vector / vectorMagnitude;
 
             return normalizedVector;

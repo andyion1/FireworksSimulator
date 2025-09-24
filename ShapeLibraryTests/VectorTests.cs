@@ -118,5 +118,16 @@ namespace ShapeLibraryTests
             Assert.AreEqual(1f, Vector.Magnitude(result));
         }
 
+        [TestMethod]
+        public void TestNormalizationOfZeroVector()
+        {
+            Vector vector = new Vector(0, 0);
+
+            Vector result = Vector.Normalize(vector);
+
+            Assert.AreEqual(0f, result.X);
+            Assert.AreEqual(0f, result.Y);
+        }
+
     }
 }
