@@ -107,6 +107,16 @@ namespace ShapeLibraryTests
         }
 
         [TestMethod]
+        public void TestMagnitudeNegativeValue()
+        {
+            Vector vector = new Vector(-3, -4);
+
+            float result = Vector.Magnitude(vector);
+
+            Assert.AreEqual(5f, result);
+        }
+
+        [TestMethod]
         public void TestNormalizationWorks()
         {
             Vector vector = new Vector(10, 0);
