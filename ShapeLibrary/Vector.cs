@@ -60,9 +60,12 @@ namespace ShapeLibrary
             return new Vector(xValue, yValue);
         }
 
-        public static Vector Magnitude(Vector vector)
+        public static float Magnitude(Vector vector)
         {
-            
+            float sumOfSquares = (vector.X * vector.X) + (vector.Y * vector.Y);
+            float magnitude = (float)Math.Sqrt(sumOfSquares);
+
+            return magnitude;
         }
 
     }
