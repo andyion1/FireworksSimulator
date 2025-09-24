@@ -25,12 +25,18 @@ namespace ShapeLibrary
 
         public static Vector operator +(Vector vector1, Vector vector2)
         {
-            return new Vector(vector1.X + vector2.X, vector1.Y + vector2.Y);
+            float xValue = vector1.X + vector2.X;
+            float yValue = vector1.Y + vector2.Y;
+            
+            return new Vector(xValue, yValue);
         }
 
         public static Vector operator -(Vector vector1, Vector vector2)
         {
-            return new Vector(vector1.X - vector2.X, vector1.Y - vector2.Y);
+            float xValue = (vector1.X - vector2.X);
+            float yValue = (vector1.Y - vector2.Y);
+            
+            return new Vector(xValue, yValue);
         }
 
         public static Vector operator *(Vector vector, float scalar)
