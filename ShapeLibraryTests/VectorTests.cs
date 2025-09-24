@@ -76,5 +76,27 @@ namespace ShapeLibraryTests
             Assert.AreEqual(6, result.Y);
         }
 
+        [TestMethod]
+        public void TestDivisionWorks()
+        {
+            Vector vector = new Vector(4, 8);
+
+            Vector result = vector / 2f;
+
+            Assert.AreEqual(2, result.X);
+            Assert.AreEqual(4, result.Y);
+        }
+
+        [TestMethod]
+        public void TestDivisionBy0Exception()
+        {
+            Vector vector = new Vector(4, 8);
+
+            Vector result = vector / 2f;
+
+            Assert.AreEqual(2, result.X);
+            Assert.AreEqual(4, result.Y);
+        }
+
     }
 }
