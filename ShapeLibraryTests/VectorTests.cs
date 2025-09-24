@@ -65,5 +65,16 @@ namespace ShapeLibraryTests
             Assert.AreEqual(3, result.Y);
         }
 
+        [TestMethod]
+        public void TestMultiplicationWorks()
+        {
+            Vector vector = new Vector(2, 3);
+
+            Vector result = vector * 2f;
+
+            Assert.AreEqual(4, result.X);
+            Assert.AreEqual(6, result.Y);
+        }
+
     }
 }
