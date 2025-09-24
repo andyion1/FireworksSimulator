@@ -35,12 +35,28 @@ namespace ShapeLibrary
 
         public static Vector operator *(Vector vector, float scalar)
         {
-            return new Vector(vector.X * scalar, vector.Y * scalar);
+            float xValue = vector.X * scalar;
+            float yValue = vector.Y * scalar;
+            
+            return new Vector(xValue, yValue);
         }
 
         public static Vector operator /(Vector vector, float scalar)
         {
-            return new Vector(vector.X / scalar, vector.Y / scalar);
+            if (scalar == 0)
+            {
+                throw new ArgumentException("ERROR: Scalar value can not be 0.");
+            }
+            
+            float xValue = vector.X / scalar;
+            float yValue = vector.Y / scalar;
+            
+            return new Vector(xValue, yValue);
+        }
+
+        public static Vector Magnitude(Vector vector)
+        {
+            
         }
 
     }
