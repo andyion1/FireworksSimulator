@@ -51,7 +51,7 @@ namespace ShapeLibrary
         {
             if (scalar == 0)
             {
-                throw new ArgumentException("ERROR: Scalar value can not be 0.");
+                throw new DivideByZeroException("ERROR: Cannot divide a vector by 0.");
             }
             
             float xValue = vector.X / scalar;
