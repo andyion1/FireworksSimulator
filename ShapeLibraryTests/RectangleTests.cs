@@ -11,18 +11,18 @@ public sealed class RectangleTests
     private float width = 100f;
     private float height = 100f;
 
-    private Colour DefaultColour = new Colour(100, 150, 200);
+    private Colour defaultColour = new Colour(100, 150, 200);
 
     [TestMethod]
     public void Constructor_AssignsPropertiesCorrectly()
     {
-        Rectangle rectangle = new Rectangle(x, y, width, height, DefaultColour);
+        Rectangle rectangle = new Rectangle(x, y, width, height, defaultColour);
 
         Assert.AreEqual(x, rectangle.X);
         Assert.AreEqual(y, rectangle.Y);
         Assert.AreEqual(width, rectangle.Width);
         Assert.AreEqual(height, rectangle.Height);
-        Assert.AreEqual(DefaultColour, rectangle.Colour);
+        Assert.AreEqual(defaultColour, rectangle.Colour);
     }
 
     [TestMethod]
@@ -36,12 +36,22 @@ public sealed class RectangleTests
     }
 
     [TestMethod]
+    public void Vertices_HaveCorrectCount()
+    {
+        Rectangle rectangle = new Rectangle(x, y, width, height, defaultColour);
+
+        List<Vector> vertices = rectangle.Vertices;
+
+        Assert.AreEqual(4, vertices.Count);
+    }
+
+    [TestMethod]
     public void Constructor_ThrowsException_WhenWidthIsZero()
     {
         float invalidWidth = 0f;
 
         Assert.ThrowsException<ArgumentException>(
-            () => { Rectangle rectangle = new Rectangle(x, y, invalidWidth, height, DefaultColour); }
+            () => { Rectangle rectangle = new Rectangle(x, y, invalidWidth, height, defaultColour); }
         );
     }
 
@@ -51,7 +61,7 @@ public sealed class RectangleTests
         float invalidHeight = -10f;
 
         Assert.ThrowsException<ArgumentException>(
-            () => { Rectangle rectangle = new Rectangle(x, y, width, invalidHeight, DefaultColour); }
+            () => { Rectangle rectangle = new Rectangle(x, y, width, invalidHeight, defaultColour); }
         );
     }
 
