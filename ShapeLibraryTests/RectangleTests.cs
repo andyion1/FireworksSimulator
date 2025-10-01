@@ -1,6 +1,5 @@
 ﻿using ShapeLib;
 using ShapeLibrary;
-using System.Drawing;
 
 namespace ShapeLibraryTests;
 
@@ -51,7 +50,7 @@ public sealed class RectangleTests
     {
         Rectangle rectangle = new Rectangle(x, y, width, height, new Colour(255, 0, 0));
 
-        float vertices = rectangle.Vertices;
+        List<Vector> vertices = rectangle.Vertices;
 
         Assert.AreEqual($"({x}, {y})", vertices[0].ToString());
         Assert.AreEqual($"({x + width}, {y})", vertices[1].ToString());
