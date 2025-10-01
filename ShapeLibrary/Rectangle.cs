@@ -26,10 +26,15 @@ namespace ShapeLibrary
                     _vertices = new List<Vector>(4)
                     {
                         new Vector(X, Y),
-                        new Vector(X + Width, Y), 
+                        new Vector(X + Width, Y),
                         new Vector(X + Width, Y + Height),
                         new Vector(X, Y + Height)
                     };
+
+                    if (_vertices.Count != 4)
+                    {
+                        throw new InvalidOperationException("Rectangle must always have exactly 4 vertices.");
+                    }
                 }
 
                 return _vertices;
