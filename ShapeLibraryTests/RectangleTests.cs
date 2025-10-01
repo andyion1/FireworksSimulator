@@ -26,6 +26,16 @@ public sealed class RectangleTests
     }
 
     [TestMethod]
+    public void Colour_AssignedCorrectly()
+    {
+        Colour customColour = new Colour(10, 20, 30);
+
+        Rectangle rectangle = new Rectangle(x, y, width, height, customColour);
+
+        Assert.AreEqual(customColour, rectangle.Colour);
+    }
+
+    [TestMethod]
     public void Constructor_ThrowsException_WhenWidthIsZero()
     {
         float invalidWidth = 0f;
