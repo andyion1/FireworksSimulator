@@ -46,6 +46,21 @@ public sealed class RectangleTests
     }
 
     [TestMethod]
+    public void Vertices_ShouldAlwaysHaveFourPoints()
+    {
+        Rectangle rectangle = new Rectangle(x, y, width, height, defaultColour);
+
+        List<Vector> vertices = rectangle.Vertices;
+
+        if (vertices.Count != 4)
+        {
+            throw new InvalidOperationException("Rectangle must always have exactly 4 vertices.");
+        }
+
+        Assert.AreEqual(4, vertices.Count);
+    }
+
+    [TestMethod]
     public void Constructor_ThrowsException_WhenWidthIsZero()
     {
         float invalidWidth = 0f;
