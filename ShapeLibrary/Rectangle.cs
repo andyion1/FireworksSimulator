@@ -34,5 +34,14 @@ namespace ShapeLibrary
                 return _vertices;
             }
         }
+
+        public Rectangle(float x, float y, float width, float height, Colour colour)
+        {
+            X = x;
+            Y = y;
+            Width= width;
+            Height = height;    
+            Colour = colour;
+        }
     }
 }
