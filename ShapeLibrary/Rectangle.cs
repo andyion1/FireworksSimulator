@@ -16,5 +16,23 @@ namespace ShapeLibrary
         public Colour Colour { get; }
 
         private List<Vector>? _vertices;
+
+        public List<Vector> Vertices
+        {
+            get
+            {
+                if (_vertices == null)
+                {
+                    _vertices = new List<Vector>(4)
+                    {
+                        new Vector(X, Y),
+                        new Vector(X + Width, Y), 
+                        new Vector(X + Width, Y + Height),
+                        new Vector(X, Y + Height)
+                    };
+                }
+                return _vertices;
+            }
+        }
     }
 }
