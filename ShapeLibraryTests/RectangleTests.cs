@@ -37,6 +37,16 @@ public sealed class RectangleTests
     }
 
     [TestMethod]
+    public void Constructor_ThrowsException_WhenHeightIsNegative()
+    {
+        float invalidHeight = -10f;
+
+        Assert.ThrowsException<ArgumentException>(
+            () => { var rectangle = new Rectangle(x, y, width, invalidHeight, DefaultColour); }
+        );
+    }
+
+    [TestMethod]
     public void Vertices_CalculatedCorrectly()
     {
         var rectangle = new Rectangle(x, y, width, height, new Colour(255, 0, 0));
