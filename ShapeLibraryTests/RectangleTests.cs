@@ -17,7 +17,7 @@ public sealed class RectangleTests
     [TestMethod]
     public void Constructor_AssignsPropertiesCorrectly()
     {
-        var rectangle = new Rectangle(x, y, width, height, DefaultColour);
+        Rectangle rectangle = new Rectangle(x, y, width, height, DefaultColour);
 
         Assert.AreEqual(x, rectangle.X);
         Assert.AreEqual(y, rectangle.Y);
@@ -32,7 +32,7 @@ public sealed class RectangleTests
         float invalidWidth = 0f;
 
         Assert.ThrowsException<ArgumentException>(
-            () => { var rectangle = new Rectangle(x, y, invalidWidth, height, DefaultColour); }
+            () => { Rectangle rectangle = new Rectangle(x, y, invalidWidth, height, DefaultColour); }
         );
     }
 
@@ -42,16 +42,16 @@ public sealed class RectangleTests
         float invalidHeight = -10f;
 
         Assert.ThrowsException<ArgumentException>(
-            () => { var rectangle = new Rectangle(x, y, width, invalidHeight, DefaultColour); }
+            () => { Rectangle rectangle = new Rectangle(x, y, width, invalidHeight, DefaultColour); }
         );
     }
 
     [TestMethod]
     public void Vertices_CalculatedCorrectly()
     {
-        var rectangle = new Rectangle(x, y, width, height, new Colour(255, 0, 0));
+        Rectangle rectangle = new Rectangle(x, y, width, height, new Colour(255, 0, 0));
 
-        var vertices = rectangle.Vertices;
+        float vertices = rectangle.Vertices;
 
         Assert.AreEqual($"({x}, {y})", vertices[0].ToString());
         Assert.AreEqual($"({x + width}, {y})", vertices[1].ToString());
