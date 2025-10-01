@@ -31,12 +31,23 @@ namespace ShapeLibrary
                         new Vector(X, Y + Height)
                     };
                 }
+
                 return _vertices;
             }
         }
 
         public Rectangle(float x, float y, float width, float height, Colour colour)
         {
+            if (width <= 0)
+            {
+                throw new ArgumentException("Width cannot be less or equal to 0");
+            }
+
+            if (height <= 0)
+            {
+                throw new ArgumentException("Height cannot be less or equal to 0");
+            }
+            
             X = x;
             Y = y;
             Width= width;

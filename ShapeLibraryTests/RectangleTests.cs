@@ -1,4 +1,5 @@
 ﻿using ShapeLibrary;
+using System.Drawing;
 
 namespace ShapeLibraryTests;
 
@@ -16,5 +17,14 @@ public sealed class RectangleTests
         Assert.AreEqual(100f, rectangle.Width);
         Assert.AreEqual(100f, rectangle.Height);
         Assert.AreEqual(colour, rectangle.Colour);
+    }
+
+    [TestMethod]
+    public void Vertices_CalculatedCorrectly()
+    {
+        Colour colour = new Colour(100, 150, 200);
+        Rectangle rectangle = new ShapeLibrary.Rectangle(50, 50, 100, 100, colour);
+
+
     }
 }
