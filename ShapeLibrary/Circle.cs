@@ -15,7 +15,7 @@ namespace ShapeLibrary
         public float Radius { get; }
         public Colour Colour { get; }
 
-        private int defaultSegments = 6;
+        private int defaultSegments = 36;
 
         private List<Vector> _vertices;
 
