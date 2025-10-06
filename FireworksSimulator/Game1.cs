@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DrawingLib.Graphics;
+using DrawingLibrary;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using DrawingLibrary;
-using DrawingLib.Graphics;
 using ShapeLibrary;
+using System.Collections.Generic;
 
 namespace FireworksSimulator;
 
@@ -11,6 +12,11 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+
+    private RenderTarget2D _renderTarget;
+    private IScreen _screen;
+    private IShapesRenderer _shapes;
+    private List<IShape> _shapesList;
 
     public Game1()
     {
@@ -21,7 +27,10 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _shapesList = new List<IShape>();
+        _renderTarget = new RenderTarget2D(GraphicsDevice, 800, 600);
+        _screen = new Screen(_renderTarget);
+        _shapes = new ShapesRenderer(GraphicsDevice);
 
         base.Initialize();
     }
