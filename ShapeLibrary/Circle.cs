@@ -15,6 +15,8 @@ namespace ShapeLibrary
         public float Radius { get; }
         public Colour Colour { get; }
 
+        private int defaultSegments = 6;
+
         private List<Vector> _vertices;
 
         public List<Vector> Vertices
@@ -24,7 +26,11 @@ namespace ShapeLibrary
                 if (_vertices == null)
                 {
                     _vertices = new List<Vector>();
+
+                    //Cons for consecutive
+                    float angleConsPoints = (float)(2 * Math.PI / defaultSegments);
                 }
+
                 return _vertices;
             }
         }
