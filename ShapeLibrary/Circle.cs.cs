@@ -14,6 +14,11 @@ namespace ShapeLibrary
 
         public Circle(float x, float y, float radius, Colour colour)
         {
+            if (radius <= 0f)
+            {
+                throw new ArgumentException("The Radius cannot be less or equal than 0")
+            }
+            
             Radius = radius;
             Colour = colour;
             Center = new Vector(x, y);
