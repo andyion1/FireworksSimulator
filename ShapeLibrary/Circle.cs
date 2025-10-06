@@ -39,7 +39,7 @@ namespace ShapeLibrary
         {
             if (radius <= 0f)
             {
-                throw new ArgumentException("The Radius cannot be less or equal than 0")
+                throw new ArgumentException("The Radius cannot be less or equal than 0");
             }
             
             Radius = radius;
