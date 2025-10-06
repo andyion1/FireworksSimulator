@@ -1,5 +1,4 @@
-﻿using ShapeLib;
-using ShapeLibrary;
+﻿using ShapeLibrary;
 
 namespace ShapeLibraryTests;
 
