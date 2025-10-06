@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShapeLibrary
 {
-    public class Rectangle : IRectangle
+    internal class Rectangle : IRectangle
     {
         public float X { get; }
         public float Y { get; }
