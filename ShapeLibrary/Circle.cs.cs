@@ -10,5 +10,13 @@ namespace ShapeLibrary
     {
         public Vector Center { get; }
         public float Radius { get; }
+        public Colour Colour { get; }
+
+        public Circle(float x, float y, float radius, Colour colour)
+        {
+            Radius = radius;
+            Colour = colour;
+            Center = new Vector(x, y);
+        }
     }
 }
