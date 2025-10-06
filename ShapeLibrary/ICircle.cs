@@ -1,6 +1,4 @@
-﻿using ShapeLibrary;
-
-namespace ShapeLib
+﻿namespace ShapeLib
 {
     public interface ICircle : IShape
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShapeLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShapeLibrary
 {
-    internal class Circle
+    internal class Circle : ICircle
     {
         public Vector Center { get; }
         public float Radius { get; }

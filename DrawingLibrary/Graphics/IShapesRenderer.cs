@@ -19,7 +19,7 @@ namespace DrawingLib.Graphics
         /// Draw a given shape
         /// </summary>
         /// <param name="shape"></param>
-        void DrawShape(IShape shape);
+        void DrawShape(IShape shape, float thickness = 0.8f);
 
         /// <summary>
         /// Ends the drawing
