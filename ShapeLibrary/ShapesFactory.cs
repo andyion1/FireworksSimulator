@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShapeLibrary
 {
-    internal class ShapesFactory
+    public static class ShapesFactory
     {
         public static ICircle CreateCircle(float x, float y, float radius, Colour colour)
         {
