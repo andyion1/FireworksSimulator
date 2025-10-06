@@ -29,6 +29,14 @@ namespace ShapeLibrary
 
                     //Cons for consecutive
                     float angleConsPoints = (float)(2 * Math.PI / defaultSegments);
+
+                    for (int i = 0; i < defaultSegments; i++)
+                    {
+                        float x = Center.X + (float)(Radius * Math.Cos(angleConsPoints));
+                        float y = Center.Y + (float)(Radius * Math.Sin(angleConsPoints));
+
+                        _vertices.Add(new Vector(x, y));
+                    }
                 }
 
                 return _vertices;
