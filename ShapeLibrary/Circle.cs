@@ -51,7 +51,13 @@ namespace ShapeLibrary
             {
                 throw new ArgumentException("The Radius cannot be less or equal than 0");
             }
-            
+
+
+            if (colour == null)
+            {
+                throw new ArgumentNullException(nameof(colour), "The Colour cannot be null.");
+            }
+
             Radius = radius;
             Colour = colour;
             Center = new Vector(x, y);
