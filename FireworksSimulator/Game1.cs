@@ -1,5 +1,7 @@
 ﻿using DrawingLib.Graphics;
+using DrawingLibrary.Input;
 using DrawingLibrary;
+using DrawingLibrary.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -44,10 +46,21 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
+        ICustomMouse mouse = CustomMouse.Instance;
+        mouse.Update();
+
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
+        if (mouse.IsLeftButtonClicked())
+        {
+            Vector2? position = mouse.GetScreenPosition(_screen);
+            
+            if (position.HasValue)
+            {
+                _shapesList.Add(ShapesFactory.CreateCircle(position.Value.X, position.Value.Y, 25f, new Colour(255, 128, 0))); // Orange circle
+            }
+        }
 
         base.Update(gameTime);
     }
