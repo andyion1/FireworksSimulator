@@ -52,7 +52,12 @@ namespace ShapeLibrary
             {
                 throw new ArgumentException("Height cannot be less or equal to 0");
             }
-            
+
+            if (colour == null)
+            {
+                throw new ArgumentNullException(nameof(colour), "The Colour cannot be null.");
+            }
+
             X = x;
             Y = y;
             Width= width;
