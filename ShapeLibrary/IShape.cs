@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using ShapeLibrary;
 
-namespace ShapeLib
+namespace ShapeLibrary
 {
     /// <summary>
     /// Represents any geometric shape

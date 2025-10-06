@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using ShapeLibrary;
 
-namespace ShapeLib
+namespace ShapeLibrary
 {
     public interface IRectangle : IShape
     {
