@@ -2,7 +2,7 @@
 using DrawingLib.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace DrawingLib.Input
+namespace DrawingLibrary.Input
 {
     public interface ICustomMouse
     {

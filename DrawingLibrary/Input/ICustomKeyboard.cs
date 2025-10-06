@@ -1,7 +1,7 @@
 
 using Microsoft.Xna.Framework.Input;
 
-namespace DrawingLib.Input
+namespace DrawingLibrary.Input
 {
     public interface ICustomKeyboard
     {

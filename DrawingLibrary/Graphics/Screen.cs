@@ -1,4 +1,4 @@
-using DrawingLib.Graphics;
+using DrawingLibrary.Graphics;
 using DrawingLibrary;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrawingLibrary
+namespace DrawingLib.Graphics
 {
     public class Screen : IScreen
     {
