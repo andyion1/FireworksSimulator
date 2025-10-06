@@ -4,8 +4,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.*">
-    <ProjectReference Include="..\ShapeLibrary\ShapeLibrary.csproj" />
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <ProjectReference Include="..\ShapeLibrary\ShapeLibrary.csproj" />
   </ItemGroup>
 </Project>
