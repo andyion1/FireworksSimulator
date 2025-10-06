@@ -83,8 +83,19 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _screen.Set();
+        GraphicsDevice.Clear(Color.Black);
 
-        base.Draw(gameTime);
+        _shapes.Begin();
+
+        foreach (IShape shape in _shapesList)
+        {
+            _shapes.DrawShape(shape);
+        }
+
+        _shapes.End();
+
+        _screen.UnSet();
     }
+
 }
