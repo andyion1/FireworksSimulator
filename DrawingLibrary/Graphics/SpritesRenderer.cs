@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DrawingLib.Graphics
+namespace DrawingLibrary.Graphics
 {
     public sealed class SpritesRenderer : ISpritesRenderer
     {

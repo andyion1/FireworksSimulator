@@ -9,7 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrawingLib.Graphics
+namespace DrawingLibrary.Graphics
 {
     public class Screen : IScreen
     {

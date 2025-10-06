@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ShapeLibrary;
 
-namespace DrawingLib.Graphics
+namespace DrawingLibrary.Graphics
 {
     public interface IShapesRenderer : IDisposable
     {

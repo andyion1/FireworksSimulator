@@ -5,7 +5,7 @@ using System;
 
 using ShapeLibrary;
 
-namespace DrawingLib.Graphics
+namespace DrawingLibrary.Graphics
 {
     /// <summary>
     /// Represents a scalable screen that uses a RenderTarget2D in MonoGame. 

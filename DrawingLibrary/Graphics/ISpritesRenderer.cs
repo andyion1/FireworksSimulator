@@ -4,7 +4,7 @@ using System;
 
 using ShapeLibrary;
 
-namespace DrawingLib.Graphics
+namespace DrawingLibrary.Graphics
 {
     public interface ISpritesRenderer : IDisposable
     {

@@ -1,4 +1,4 @@
-﻿using DrawingLib.Graphics;
+﻿using DrawingLibrary.Graphics;
 using DrawingLibrary.Input;
 using DrawingLibrary;
 using DrawingLibrary.Input;
