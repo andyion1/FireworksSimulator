@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ShapeLib;
 
+using ShapeLibrary;
 
 namespace DrawingLib.Graphics
 {

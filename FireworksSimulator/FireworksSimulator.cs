@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace FireworksSimulator;
 
-public class Game1 : Game
+public class FireworksSimulator : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
@@ -20,7 +20,7 @@ public class Game1 : Game
     private IShapesRenderer _shapes;
     private List<IShape> _shapesList;
 
-    public Game1()
+    public FireworksSimulator()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
