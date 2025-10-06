@@ -71,6 +71,11 @@ public class Game1 : Game
             }
         }
 
+        if (mouse.IsMiddleButtonClicked())
+        {
+            _shapesList.Clear();
+        }
+
         base.Update(gameTime);
     }
 
