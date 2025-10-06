@@ -32,8 +32,10 @@ namespace ShapeLibrary
 
                     for (int i = 0; i < defaultSegments; i++)
                     {
-                        float x = Center.X + (float)(Radius * Math.Cos(angleConsPoints));
-                        float y = Center.Y + (float)(Radius * Math.Sin(angleConsPoints));
+                        float angle = i * angleConsPoints;
+
+                        float x = Center.X + (float)(Radius * Math.Cos(angle));
+                        float y = Center.Y + (float)(Radius * Math.Sin(angle));
 
                         _vertices.Add(new Vector(x, y));
                     }
