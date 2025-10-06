@@ -1,5 +1,7 @@
 
 using Microsoft.Xna.Framework.Input;
+using DrawingLibrary.Graphics;
+using DrawingLibrary.Input;
 
 namespace DrawingLibrary.Input
 {

@@ -1,5 +1,5 @@
 
-using DrawingLib.Graphics;
+using DrawingLibrary.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace DrawingLibrary.Input

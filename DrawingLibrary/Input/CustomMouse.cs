@@ -1,5 +1,5 @@
-using DrawingLib.Graphics;
-using DrawingLib.Input;
+using DrawingLibrary.Graphics;
+using DrawingLibrary.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
