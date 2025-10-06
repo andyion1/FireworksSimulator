@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Input;
 namespace DrawingLibrary.Input
 {
 
-    public class CustomMouse
+    public class CustomMouse : ICustomMouse
     {
         private MouseState _current;
         private MouseState _previous;
