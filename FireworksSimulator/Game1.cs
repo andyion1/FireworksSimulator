@@ -62,6 +62,15 @@ public class Game1 : Game
             }
         }
 
+        if (mouse.IsRightButtonClicked())
+        {
+            Vector2? position = mouse.GetScreenPosition(_screen);
+            if (position.HasValue)
+            {
+                _shapesList.Add(ShapesFactory.CreateRectangle(position.Value.X, position.Value.Y, 64f, 40f, new Colour(0, 128, 255))); // Blue rectangle
+            }
+        }
+
         base.Update(gameTime);
     }
 
