@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("ShapeLibraryTests")]
+[assembly: InternalsVisibleTo("Fireworks")]
 
 
 namespace ShapeLibrary
