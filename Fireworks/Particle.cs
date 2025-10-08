@@ -25,7 +25,6 @@ namespace Fireworks;
             _lifespan = lifespan;
 
 
-
             Circle = new Circle(x, y, 2f, colour);
 
             Acceleration = new Vector(0, 0);
