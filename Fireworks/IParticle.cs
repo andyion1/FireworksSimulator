@@ -1,7 +1,6 @@
 ﻿using ShapeLibrary;
-using FireWorks;
 
-namespace Fireworks;
+namespace ShapeLibrary;
 
 public interface IParticle
 {

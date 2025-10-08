@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShapeLibrary;
+using Fireworks;
 
-namespace FireWorks;
+namespace Fireworks;
     internal class Particle : IParticle
     {
         private float _lifespan;
