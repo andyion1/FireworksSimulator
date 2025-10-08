@@ -9,7 +9,7 @@ using Fireworks;
 namespace Fireworks;
     internal class Particle : IParticle
     {
-        private float _lifespan;
+        private int _lifespan;
     
         public Vector Acceleration { get; }
         public Vector Velocity { get; }

@@ -11,7 +11,7 @@ namespace Fireworks
 {
     public static class ParticleFactory
     {
-        public static IParticle Create(float x, float y, Colour colour, float lifespan)
+        public static IParticle Create(float x, float y, Colour colour, int lifespan)
         {
             return new Particle(x, y, colour, lifespan);
         }
