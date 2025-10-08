@@ -47,4 +47,19 @@ namespace ShapeLibraryTests;
 
             Assert.ThrowsException<ArgumentException>(() => new Circle(x, y, radius, colour));
         }
+
+        [TestMethod]
+        public void Vertices_ValidCircle_GeneratesCorrectNumberOfVertices()
+        {
+            float x = 100f;
+            float y = 200f;
+            float radius = 50f;
+            Colour colour = new Colour(255, 0, 0);
+            int expectedVertexCount = 36;
+
+            Circle circle = new Circle(x, y, radius, colour);
+            List<Vector> vertices = circle.Vertices;
+
+            Assert.AreEqual(expectedVertexCount, vertices.Count);
+        }
 }
