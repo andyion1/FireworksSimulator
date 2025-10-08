@@ -36,4 +36,15 @@ namespace ShapeLibraryTests;
 
             Assert.ThrowsException<ArgumentException>(() => new Circle(x, y, radius, colour));
         }
+
+        [TestMethod]
+        public void Constructor_NegativeRadius_ThrowsArgumentException()
+        {
+            float x = 100f;
+            float y = 200f;
+            float radius = -10f;
+            Colour colour = new Colour(255, 0, 0);
+
+            Assert.ThrowsException<ArgumentException>(() => new Circle(x, y, radius, colour));
+        }
 }
