@@ -35,4 +35,9 @@ namespace Fireworks;
         {
             Acceleration += new Vector(0, 0.1f);
         }
+
+        public void ApplyVelocity(Vector velocity)
+        {
+            Velocity += velocity;
+        }
 }
