@@ -119,6 +119,11 @@ namespace FireworksSimulator
 
             _shapes.Begin();
 
+            foreach (IShape shape in _shapesList)
+            {
+                _shapes.DrawShape(shape, 2.5f);
+            }
+
             foreach (Particle particle in _particles)
             {
                 _shapes.DrawShape(particle.Circle, 2f);
