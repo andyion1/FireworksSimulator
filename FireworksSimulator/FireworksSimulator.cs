@@ -67,11 +67,22 @@ namespace FireworksSimulator
                 Vector2? position = mouse.GetScreenPosition(_screen);
                 if (position.HasValue)
                 {
-                    _shapesList.Add(
-                        ShapesFactory.CreateCircle(position.Value.X, position.Value.Y, 25f,
-                        new Colour(255, 128, 0))); // orange
+                    float x = position.Value.X;
+                    float y = position.Value.Y;
+
+                    float vx = (float)(_random.NextDouble() * 20 - 10);
+                    float vy = (float)(_random.NextDouble() * 20 - 10);
+
+                    Colour colour = new Colour(255, 128, 0); // orange
+                    int lifespan = 60;
+
+                    Particle particle = new Particle(x, y, colour, lifespan);
+                    particle.ApplyVelocity(new Vector(vx, vy));
+
+                    _particles.Add(particle);
                 }
             }
+
 
             if (mouse.IsRightButtonClicked())
             {
