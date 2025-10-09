@@ -1,94 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeLibrary;
 using Fireworks;
 
-namespace Fireworks.Test;
-
-[TestClass]
-public sealed class ParticleTests
+namespace Fireworks.Test
 {
-    [TestMethod]
-    public void Constructor_ShouldInitializePropertiesCorrectly()
+    [TestClass]
+    public sealed class ParticleTests
     {
-        Colour colour = new Colour(255, 0, 0);
-        Particle particle = new Particle(10f, 20f, colour, 100);
+        private float Margin = 0.001f;
+        private float DefaultX = 0f;
+        private float DefaultY = 0f;
+        private float VelocityX = 1f;
+        private float VelocityY = 1f;
+        private int LongLifespan = 100;
+        private int ShortLifespan = 1;
+        private int MediumLifespan = 3;
 
-        Assert.AreEqual(10f, particle.Position.X, 0.001);
-        Assert.AreEqual(20f, particle.Position.Y, 0.001);
-        Assert.AreEqual(colour, particle.Colour);
-        Assert.AreEqual(false, particle.Done);
-        Assert.IsNotNull(particle.Circle);
-    }
+        private static Colour DefaultColour = new Colour(255, 255, 255);
 
+        [TestMethod]
+        public void Constructor_ShouldInitializePropertiesCorrectly()
+        {
+            Particle particle = new Particle(10f, 20f, DefaultColour, LongLifespan);
 
-    [TestMethod]
-    public void ApplyGravity_ShouldIncreaseAccelerationY()
-    {
-        Colour colour = new Colour(0, 255, 0);
-        Particle particle = new Particle(0f, 0f, colour, 50);
+            Assert.AreEqual(10f, particle.Position.X, Margin);
+            Assert.AreEqual(20f, particle.Position.Y, Margin);
+            Assert.AreEqual(DefaultColour, particle.Colour);
+            Assert.IsFalse(particle.Done);
+            Assert.IsNotNull(particle.Circle);
+        }
 
-        var initialAccel = particle.Acceleration.Y;
-        particle.ApplyGravity();
+        [TestMethod]
+        public void ApplyGravity_ShouldIncreaseAccelerationY()
+        {
+            Particle particle = new Particle(DefaultX, DefaultY, DefaultColour, LongLifespan);
 
-        Assert.IsTrue(particle.Acceleration.Y > initialAccel);
-    }
+            float initialAccel = particle.Acceleration.Y;
+            particle.ApplyGravity();
+            float newAccel = particle.Acceleration.Y;
 
-    [TestMethod]
-    public void ApplyVelocity_ShouldIncreaseVelocity()
-    {
-        Colour colour = new Colour(0, 0, 255);
-        Particle particle = new Particle(0f, 0f, colour, 50);
+            Assert.IsTrue(newAccel > initialAccel);
+        }
 
-        Vector velocityToAdd = new Vector(1f, 2f);
-        particle.ApplyVelocity(velocityToAdd);
+        [TestMethod]
+        public void ApplyVelocity_ShouldIncreaseVelocity()
+        {
+            Particle particle = new Particle(DefaultX, DefaultY, DefaultColour, LongLifespan);
 
-        Assert.AreEqual(1f, particle.Velocity.X, 0.001);
-        Assert.AreEqual(2f, particle.Velocity.Y, 0.001);
-    }
+            Vector velocity = new Vector(VelocityX, VelocityY);
+            particle.ApplyVelocity(velocity);
 
-    [TestMethod]
-    public void Update_ShouldMoveParticleAndDecreaseLifespan()
-    {
-        Colour colour = new Colour(255, 255, 0);
-        Particle particle = new Particle(0f, 0f, colour, 3);
+            Assert.AreEqual(VelocityX, particle.Velocity.X, Margin);
+            Assert.AreEqual(VelocityY, particle.Velocity.Y, Margin);
+        }
 
-        particle.ApplyVelocity(new Vector(1f, 1f));
-        particle.Update();
+        [TestMethod]
+        public void Update_ShouldMoveParticleAndDecreaseLifespan()
+        {
+            Particle particle = new Particle(DefaultX, DefaultY, DefaultColour, MediumLifespan);
 
-        Assert.AreEqual(1f, particle.Position.X, 0.001);
-        Assert.AreEqual(1f, particle.Position.Y, 0.001);
-        Assert.AreEqual(false, particle.Done);
-    }
+            Vector velocity = new Vector(VelocityX, VelocityY);
+            particle.ApplyVelocity(velocity);
+            particle.Update();
 
-    [TestMethod]
-    public void Update_ShouldSetDone_WhenLifespanExpires()
-    {
-        Colour colour = new Colour(255, 255, 255);
-        Particle particle = new Particle(0f, 0f, colour, 1);
+            Assert.AreEqual(VelocityX, particle.Position.X, Margin);
+            Assert.AreEqual(VelocityY, particle.Position.Y, Margin);
+            Assert.IsFalse(particle.Done);
+        }
 
-        particle.Update();
+        [TestMethod]
+        public void Update_ShouldSetDone_WhenLifespanExpires()
+        {
+            Particle particle = new Particle(DefaultX, DefaultY, DefaultColour, ShortLifespan);
 
-        Assert.IsTrue(particle.Done);
-    }
+            particle.Update();
 
+            Assert.IsTrue(particle.Done);
+        }
 
-    [TestMethod]
-    public void Update_ShouldNotMove_WhenDoneIsTrue()
-    {
-        Colour colour = new Colour(100, 100, 100);
-        Particle particle = new Particle(0f, 0f, colour, 1);
+        [TestMethod]
+        public void Update_ShouldNotMove_WhenDoneIsTrue()
+        {
+            Particle particle = new Particle(DefaultX, DefaultY, DefaultColour, ShortLifespan);
 
-        particle.Update();
+            particle.Update();
 
-        Vector positionBefore = particle.Position;
-        particle.Update();
-        Vector positionAfter = particle.Position;
+            Vector positionBefore = particle.Position;
+            particle.Update();
+            Vector positionAfter = particle.Position;
 
-        Assert.AreEqual(positionBefore.X, positionAfter.X, 0.001);
-        Assert.AreEqual(positionBefore.Y, positionAfter.Y, 0.001);
+            Assert.AreEqual(positionBefore.X, positionAfter.X, Margin);
+            Assert.AreEqual(positionBefore.Y, positionAfter.Y, Margin);
+        }
     }
 }
