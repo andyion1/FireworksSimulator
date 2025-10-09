@@ -30,4 +30,9 @@ namespace Fireworks;
             Acceleration = new Vector(0, 0);
             Velocity = new Vector(0, 0);
         }
+
+        public void ApplyGravity()
+        {
+            Acceleration += new Vector(0, 0.1f);
+        }
 }
