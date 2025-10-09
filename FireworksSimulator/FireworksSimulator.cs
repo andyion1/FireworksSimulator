@@ -115,7 +115,7 @@ namespace FireworksSimulator
         protected override void Draw(GameTime gameTime)
         {
             _screen.Set();
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _shapes.Begin();
 
