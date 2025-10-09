@@ -1,10 +1,12 @@
-﻿using DrawingLibrary.Graphics;
+﻿using System;
+using System.Collections.Generic;
+using DrawingLibrary.Graphics;
 using DrawingLibrary.Input;
+using Fireworks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ShapeLibrary;
-using System.Collections.Generic;
 
 namespace FireworksSimulator
 {
@@ -18,6 +20,9 @@ namespace FireworksSimulator
         private IShapesRenderer _shapes;
         private ISpritesRenderer _sprites;
         private List<IShape> _shapesList;
+
+        private List<Particle> _particles;
+        private Random _random;
 
         public FireworksSimulator()
         {
@@ -33,6 +38,10 @@ namespace FireworksSimulator
             _screen = new Screen(_renderTarget);
             _shapes = new ShapesRenderer(GraphicsDevice);
             _sprites = new SpritesRenderer(GraphicsDevice);
+
+            _particles = new List<Particle>();
+            _random = new Random();
+
 
             base.Initialize();
         }

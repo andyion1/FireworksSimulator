@@ -8,6 +8,7 @@ using Fireworks;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("FireworksTests")]
+[assembly: InternalsVisibleTo("FireworksSimulator")]
 
 namespace Fireworks;
 internal class Particle : IParticle
