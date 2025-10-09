@@ -11,9 +11,9 @@ namespace Fireworks;
     {
         private int _lifespan;
     
-        public Vector Acceleration { get; }
-        public Vector Velocity { get; }
-        public Vector Position { get; }
+        public Vector Acceleration { get; private set; }
+        public Vector Velocity { get; private set;  }
+        public Vector Position { get; private set;  }
         public ICircle Circle { get; }
         public Colour Colour { get; }
         public bool Done { get; }
