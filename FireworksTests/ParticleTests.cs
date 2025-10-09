@@ -36,4 +36,17 @@ public sealed class ParticleTests
 
         Assert.IsTrue(particle.Acceleration.Y > initialAccel);
     }
+
+    [TestMethod]
+    public void ApplyVelocity_ShouldIncreaseVelocity()
+    {
+        Colour colour = new Colour(0, 0, 255);
+        Particle particle = new Particle(0f, 0f, colour, 50);
+
+        Vector velocityToAdd = new Vector(1f, 2f);
+        particle.ApplyVelocity(velocityToAdd);
+
+        Assert.AreEqual(1f, particle.Velocity.X, 0.001);
+        Assert.AreEqual(2f, particle.Velocity.Y, 0.001);
+    }
 }
