@@ -23,4 +23,17 @@ public sealed class ParticleTests
         Assert.AreEqual(false, particle.Done);
         Assert.IsNotNull(particle.Circle);
     }
+
+
+    [TestMethod]
+    public void ApplyGravity_ShouldIncreaseAccelerationY()
+    {
+        Colour colour = new Colour(0, 255, 0);
+        Particle particle = new Particle(0f, 0f, colour, 50);
+
+        var initialAccel = particle.Acceleration.Y;
+        particle.ApplyGravity();
+
+        Assert.IsTrue(particle.Acceleration.Y > initialAccel);
+    }
 }
