@@ -67,11 +67,28 @@ public sealed class ParticleTests
     [TestMethod]
     public void Update_ShouldSetDone_WhenLifespanExpires()
     {
-        var colour = new Colour(255, 255, 255);
-        var particle = new Particle(0f, 0f, colour, 1);
+        Colour colour = new Colour(255, 255, 255);
+        Particle particle = new Particle(0f, 0f, colour, 1);
 
         particle.Update();
 
         Assert.IsTrue(particle.Done);
+    }
+
+
+    [TestMethod]
+    public void Update_ShouldNotMove_WhenDoneIsTrue()
+    {
+        Colour colour = new Colour(100, 100, 100);
+        Particle particle = new Particle(0f, 0f, colour, 1);
+
+        particle.Update();
+
+        Vector positionBefore = particle.Position;
+        particle.Update();
+        Vector positionAfter = particle.Position;
+
+        Assert.AreEqual(positionBefore.X, positionAfter.X, 0.001);
+        Assert.AreEqual(positionBefore.Y, positionAfter.Y, 0.001);
     }
 }
