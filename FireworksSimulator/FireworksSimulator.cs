@@ -115,18 +115,20 @@ namespace FireworksSimulator
         protected override void Draw(GameTime gameTime)
         {
             _screen.Set();
-
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             _shapes.Begin();
-            foreach (IShape shape in _shapesList)
+
+            foreach (Particle particle in _particles)
             {
-                _shapes.DrawShape(shape, 2.5f);
+                _shapes.DrawShape(particle.Circle, 2f);
             }
+
             _shapes.End();
             _screen.UnSet();
 
             _screen.Present(_sprites);
         }
+
     }
 }
