@@ -83,6 +83,15 @@ namespace FireworksSimulator
                 }
             }
 
+            foreach (Particle particle in _particles)
+            {
+                particle.ApplyGravity();
+                particle.Update();
+            }
+
+            // remove expired ones
+            _particles.RemoveAll(p => p.Done);
+
 
             if (mouse.IsRightButtonClicked())
             {
