@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ShapeLibrary;
 using Fireworks;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("FireworksTests")]
 
 namespace Fireworks;
     internal class Particle : IParticle
