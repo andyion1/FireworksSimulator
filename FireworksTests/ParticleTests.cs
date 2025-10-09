@@ -63,4 +63,15 @@ public sealed class ParticleTests
         Assert.AreEqual(1f, particle.Position.Y, 0.001);
         Assert.AreEqual(false, particle.Done);
     }
+
+    [TestMethod]
+    public void Update_ShouldSetDone_WhenLifespanExpires()
+    {
+        var colour = new Colour(255, 255, 255);
+        var particle = new Particle(0f, 0f, colour, 1);
+
+        particle.Update();
+
+        Assert.IsTrue(particle.Done);
+    }
 }
