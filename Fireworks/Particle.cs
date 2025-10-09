@@ -10,12 +10,13 @@ namespace Fireworks;
     internal class Particle : IParticle
     {
         private int _lifespan;
-    
+        private bool _done;
+
         public Vector Acceleration { get; private set; }
         public Vector Velocity { get; private set;  }
         public Vector Position { get; private set;  }
-        public ICircle Circle { get; }
-        public Colour Colour { get; }
+        public ICircle Circle { get; private set;  }
+        public Colour Colour { get; private set;  }
         public bool Done { get; }
 
         public Particle(float x, float y, Colour colour, int lifespan)
@@ -39,5 +40,26 @@ namespace Fireworks;
         public void ApplyVelocity(Vector velocity)
         {
             Velocity += velocity;
+        }
+
+        public void Update()
+        {
+            if (_done)
+            {
+                return;
+            }
+
+            Velocity += Acceleration;
+            Position += Velocity;
+
+            _lifespan--;
+            if (_lifespan <= 0)
+            {
+                _done = true;
+                return;
+            }
+
+            Acceleration = new Vector(0, 0);
+            Circle = new Circle(Position.X, Position.Y, 2f, Colour);
         }
 }
