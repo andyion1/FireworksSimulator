@@ -15,7 +15,9 @@ namespace Fireworks
         private int _width;
         private int _height;
 
+        public bool Exploded { get; private set; }
         public IParticle Launcher { get; private set; }
+        public List<IParticle> Particles { get; private set; }
 
 
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
