@@ -11,11 +11,11 @@ namespace Fireworks
     {
         private static Random _rng = new Random();
 
-        public IParticle Launcher { get; private set; }
+        private IExplosionPattern _pattern;
+        private int _width;
+        private int _height;
 
-        private IExplosionPattern _pattern { get; }
-        private int _width { get; }
-        private int _height { get; }
+        public IParticle Launcher { get; private set; }
 
 
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
@@ -24,6 +24,10 @@ namespace Fireworks
             {
                 throw new ArgumentNullException("Explosion pattern cannot be null.");
             }
+
+            _width = width;
+            _height = height;
+            _pattern = pattern;
 
             float x = _rng.Next(0, width);
             float y = height;
@@ -38,6 +42,10 @@ namespace Fireworks
             {
                 throw new ArgumentNullException("Explosion pattern cannot be null.");
             }
+
+            _width = width;
+            _height = height;
+            _pattern = pattern;
 
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
