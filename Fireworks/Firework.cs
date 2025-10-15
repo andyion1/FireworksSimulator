@@ -51,5 +51,11 @@ namespace Fireworks
 
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
+
+        public void Launch()
+        {
+            Exploded = false;
+            Particles.Clear();
+        }
     }
 }
