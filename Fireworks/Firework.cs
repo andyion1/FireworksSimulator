@@ -74,6 +74,17 @@ namespace Fireworks
                         double angle = _rng.NextDouble() * Math.PI * 2;
                         Vector dir = new Vector((float)Math.Cos(angle), (float)Math.Sin(angle));
                         Vector vel = Launcher.Velocity + (_pattern.ExplosionVelocity * dir);
+                        int life = _rng.Next(30, 60);
+
+                        var p = ParticleFactory.Create(
+                            Launcher.Position.X,
+                            Launcher.Position.Y,
+                            Launcher.Colour,
+                            life
+                        );
+
+                        p.ApplyVelocity(vel);
+                        Particles.Add(p);
                     }
                 }
 
@@ -87,6 +98,7 @@ namespace Fireworks
                     Particles.RemoveAt(i);
             }
         }
+
 
 
 
