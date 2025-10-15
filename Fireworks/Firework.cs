@@ -9,15 +9,22 @@ namespace Fireworks
 {
     internal class Firework : IFirework
     {
-        private int _width;
-        private int _height;
-        private IExplosionPattern _pattern;
+        private static Random _rng = new Random();
 
+        public IParticle Launcher { get; private set; }
 
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
         {
-            this._width = width;
-            this._height = height;
+            if (pattern == null)
+            {
+                throw new ArgumentNullException(nameof(pattern));
+            }
+
+            float x = _rng.Next(0, width);
+            float y = height;
+            int lifespan = _rng.Next(40, 80);
+
+            Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
     }
 }
