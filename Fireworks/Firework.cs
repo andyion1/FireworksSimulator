@@ -13,6 +13,7 @@ namespace Fireworks
 
         public IParticle Launcher { get; private set; }
 
+
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
         {
             if (pattern == null)
@@ -24,6 +25,10 @@ namespace Fireworks
             float y = height;
             int lifespan = _rng.Next(40, 80);
 
+            Launcher = ParticleFactory.Create(x, y, colour, lifespan);
+        }
+        public Firework(int width, int height, float x, float y, Colour colour, int lifespan, IExplosionPattern pattern)
+        {
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
     }
