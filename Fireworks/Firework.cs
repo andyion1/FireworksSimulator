@@ -16,7 +16,8 @@ namespace Fireworks
 
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
         {
-
+            this._width = width;
+            this._height = height;
         }
     }
 }
