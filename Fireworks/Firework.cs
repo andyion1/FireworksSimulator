@@ -68,6 +68,13 @@ namespace Fireworks
                 {
                     Exploded = true;
                     Particles = new List<IParticle>(_pattern.NumberOfParticles);
+
+                    for (int i = 0; i < _pattern.NumberOfParticles; i++)
+                    {
+                        double angle = _rng.NextDouble() * Math.PI * 2;
+                        Vector dir = new Vector((float)Math.Cos(angle), (float)Math.Sin(angle));
+                        Vector vel = Launcher.Velocity + (_pattern.ExplosionVelocity * dir);
+                    }
                 }
 
                 return;
@@ -80,6 +87,7 @@ namespace Fireworks
                     Particles.RemoveAt(i);
             }
         }
+
 
 
 
