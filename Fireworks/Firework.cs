@@ -63,6 +63,13 @@ namespace Fireworks
             if (!Exploded)
             {
                 Launcher.Update();
+
+                if (Launcher.Done)
+                {
+                    Exploded = true;
+                    Particles = new List<IParticle>(_pattern.NumberOfParticles);
+                }
+
                 return;
             }
 
@@ -73,6 +80,7 @@ namespace Fireworks
                     Particles.RemoveAt(i);
             }
         }
+
 
 
     }
