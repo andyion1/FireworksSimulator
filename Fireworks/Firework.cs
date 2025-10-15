@@ -18,7 +18,7 @@ namespace Fireworks
         {
             if (pattern == null)
             {
-                throw new ArgumentNullException(nameof(pattern));
+                throw new ArgumentNullException("Explosion pattern cannot be null.");
             }
 
             float x = _rng.Next(0, width);
@@ -29,6 +29,11 @@ namespace Fireworks
         }
         public Firework(int width, int height, float x, float y, Colour colour, int lifespan, IExplosionPattern pattern)
         {
+            if (pattern == null)
+            {
+                throw new ArgumentNullException("Explosion pattern cannot be null.");
+            }
+
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
     }
