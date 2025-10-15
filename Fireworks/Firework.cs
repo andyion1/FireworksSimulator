@@ -57,5 +57,23 @@ namespace Fireworks
             Exploded = false;
             Particles.Clear();
         }
+
+        public void Update()
+        {
+            if (!Exploded)
+            {
+                Launcher.Update();
+                return;
+            }
+
+            for (int i = Particles.Count - 1; i >= 0; i--)
+            {
+                Particles[i].Update();
+                if (Particles[i].Done)
+                    Particles.RemoveAt(i);
+            }
+        }
+
+
     }
 }

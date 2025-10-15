@@ -58,6 +58,7 @@ public Particle(float x, float y, Colour colour, int lifespan)
         Position += Velocity;
 
         _lifespan--;
+
         if (_lifespan <= 0)
         {
             _done = true;
