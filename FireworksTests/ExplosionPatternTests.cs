@@ -48,5 +48,16 @@ namespace FireworksTests
                 () => new ExplosionPattern(DefaultLaunchSpeedY, invalidMinSpeed, DefaultMaxExplosionSpeed)
             );
         }
+
+        [TestMethod]
+        public void Constructor_MaxExplosionSpeedLessThanMin_ThrowsArgumentOutOfRangeException()
+        {
+            float minSpeed = 5f;
+            float invalidMaxSpeed = 3f;
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => new ExplosionPattern(DefaultLaunchSpeedY, minSpeed, invalidMaxSpeed)
+            );
+        }
     }
 }
