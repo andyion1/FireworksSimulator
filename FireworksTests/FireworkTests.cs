@@ -111,5 +111,19 @@ namespace FireworksTests
 
             Assert.AreNotEqual(initialVelocity.Y, firework.Launcher.Velocity.Y);
         }
+
+        [TestMethod]
+        public void Update_BeforeExplosion_UpdatesLauncher()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            firework.Launch();
+            Vector initialPosition = new Vector(firework.Launcher.Position.X, firework.Launcher.Position.Y);
+
+            firework.Update();
+
+            Assert.IsFalse(firework.Exploded);
+            Assert.AreNotEqual(initialPosition.Y, firework.Launcher.Position.Y);
+        }
     }
 }
