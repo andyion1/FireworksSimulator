@@ -23,5 +23,18 @@ namespace Fireworks
             f.Launch();
             _fireworks.Add(f);
         }
+
+        public void Update()
+        {
+            for (int i = _fireworks.Count - 1; i >= 0; i--)
+            {
+                _fireworks[i].Update();
+
+                if (_fireworks[i].Exploded && _fireworks[i].Particles.Count == 0)
+                {
+                    _fireworks.RemoveAt(i);
+                }
+            }
+        }
     }
 }
