@@ -183,5 +183,31 @@ namespace FireworksTests
             Assert.IsTrue(firework.Particles.Count >= 60);
             Assert.IsTrue(firework.Particles.Count <= 100);
         }
+
+        [TestMethod]
+        public void Update_AfterExplosion_ParticlesHaveVelocity()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            float x = 400f;
+            float y = 500f;
+            int shortLifespan = 1;
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, shortLifespan, pattern);
+            firework.Launch();
+
+            firework.Update();
+            firework.Update();
+
+
+            bool allParticlesHaveVelocity = true;
+            foreach (Particle particle in firework.Particles)
+            {
+                if (particle.Velocity.X == 0 && particle.Velocity.Y == 0)
+                {
+                    allParticlesHaveVelocity = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(allParticlesHaveVelocity);
+        }
     }
 }
