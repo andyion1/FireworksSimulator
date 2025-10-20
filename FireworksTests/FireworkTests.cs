@@ -76,5 +76,16 @@ namespace FireworksTests
                 () => new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, DefaultLifespan, nullPattern)
             );
         }
+
+        [TestMethod]
+        public void Launch_SetsExplodedToFalse()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+
+            firework.Launch();
+
+            Assert.IsFalse(firework.Exploded);
+        }
     }
 }
