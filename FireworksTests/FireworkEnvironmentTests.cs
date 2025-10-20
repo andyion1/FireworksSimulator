@@ -19,5 +19,15 @@ namespace FireworksTests
         {
             return new ExplosionPattern(-8f, 2.5f, 6.5f);
         }
+
+        [TestMethod]
+        public void Constructor_CreatesEmptyFireworksList()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+
+            Assert.IsNotNull(env.Fireworks);
+            Assert.AreEqual(0, env.Fireworks.Count);
+        }
+
     }
 }
