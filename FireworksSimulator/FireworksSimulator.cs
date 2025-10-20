@@ -24,6 +24,9 @@ namespace FireworksSimulator
         private List<Particle> _particles;
         private Random _random;
 
+        private FireworkEnvironment _env;
+        private Texture2D _fadeTexture;
+
         public FireworksSimulator()
         {
             _graphics = new GraphicsDeviceManager(this);
