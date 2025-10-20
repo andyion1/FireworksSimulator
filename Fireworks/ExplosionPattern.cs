@@ -29,7 +29,15 @@ namespace Fireworks
         }
 
         public int NumberOfParticles => _rng.Next(_minParticles, _maxParticles + 1);
-        public Vector ExplosionVelocity => new Vector(3f, 3f);
+        public Vector ExplosionVelocity
+        {
+            get
+            {
+                float s = (float)(_rng.NextDouble() * (_maxExplosionSpeed - _minExplosionSpeed) + _minExplosionSpeed);
+                return new Vector(s, s);
+            }
+        }
+
         public Vector LaunchVelocity => _launchVelocity;
     }
 
