@@ -28,5 +28,15 @@ namespace FireworksTests
             Assert.IsNotNull(pattern);
             Assert.IsNotNull(pattern.LaunchVelocity);
         }
+
+        [TestMethod]
+        public void Constructor_MinExplosionSpeedZero_ThrowsArgumentOutOfRangeException()
+        {
+            float invalidMinSpeed = 0f;
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => new ExplosionPattern(DefaultLaunchSpeedY, invalidMinSpeed, DefaultMaxExplosionSpeed)
+            );
+        }
     }
 }
