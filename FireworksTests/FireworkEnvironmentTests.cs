@@ -53,5 +53,18 @@ namespace FireworksTests
             );
         }
 
+        [TestMethod]
+        public void AddFirework_LaunchesFirework()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+
+            env.AddFirework(firework);
+
+            Assert.IsFalse(firework.Exploded);
+            Assert.IsNotNull(firework.Particles);
+        }
+
     }
 }
