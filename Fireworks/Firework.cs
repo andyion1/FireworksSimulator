@@ -55,8 +55,13 @@ namespace Fireworks
         public void Launch()
         {
             Exploded = false;
-            Particles.Clear();
+
+            if (Particles == null)
+                Particles = new List<IParticle>();
+            else
+                Particles.Clear();
         }
+
 
         public void Update()
         {
