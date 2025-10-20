@@ -158,8 +158,7 @@ namespace FireworksSimulator
         protected override void Draw(GameTime gameTime)
         {
             _screen.Set();
-            GraphicsDevice.Clear(new Color(20, 20, 20));
-
+         
             _shapes.Begin();
 
             foreach (IShape shape in _shapesList)
