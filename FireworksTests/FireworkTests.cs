@@ -27,5 +27,17 @@ namespace FireworksTests
                 DefaultMaxExplosionSpeed
             );
         }
+
+        [TestMethod]
+        public void Constructor_SimpleVersion_CreatesFirework()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+
+            Assert.IsNotNull(firework);
+            Assert.IsNotNull(firework.Launcher);
+            Assert.IsFalse(firework.Exploded);
+        }
     }
 }
