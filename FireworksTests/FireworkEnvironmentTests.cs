@@ -129,5 +129,20 @@ namespace FireworksTests
             Assert.AreEqual(1, env.Fireworks.Count);
         }
 
+        [TestMethod]
+        public void Update_UpdatesMultipleFireworksSimultaneously()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework1 = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            Firework firework2 = new Firework(DefaultWidth, DefaultHeight, new Colour(0, 255, 0), pattern);
+            env.AddFirework(firework1);
+            env.AddFirework(firework2);
+
+            env.Update();
+
+            Assert.AreEqual(2, env.Fireworks.Count);
+        }
+
     }
 }
