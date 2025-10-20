@@ -12,6 +12,9 @@ namespace FireworksSimulator
 {
     public class FireworksSimulator : Game
     {
+        private const int ScreenWidth = 1920;
+        private const int ScreenHeight = 1080;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -42,7 +45,7 @@ namespace FireworksSimulator
         protected override void Initialize()
         {
             _shapesList = new List<IShape>();
-            _renderTarget = new RenderTarget2D(GraphicsDevice, 800, 600, false, SurfaceFormat.Color,
+            _renderTarget = new RenderTarget2D(GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color,
                                                 DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
 
             _screen = new Screen(_renderTarget);
