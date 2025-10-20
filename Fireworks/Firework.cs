@@ -33,7 +33,7 @@ namespace Fireworks
 
             float x = _rng.Next(0, width);
             float y = height;
-            int lifespan = _rng.Next(40, 80);
+            int lifespan = 30;
 
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
@@ -55,11 +55,12 @@ namespace Fireworks
         public void Launch()
         {
             Exploded = false;
-
             if (Particles == null)
                 Particles = new List<IParticle>();
             else
                 Particles.Clear();
+
+            Launcher.ApplyVelocity(_pattern.LaunchVelocity);
         }
 
 
