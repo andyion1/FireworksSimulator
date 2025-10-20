@@ -94,5 +94,20 @@ namespace FireworksTests
             Assert.IsTrue(particleCount >= 60);
             Assert.IsTrue(particleCount <= 100);
         }
+
+        [TestMethod]
+        public void ExplosionVelocity_ReturnsValueInValidRange()
+        {
+            float minSpeed = 2.5f;
+            float maxSpeed = 6.5f;
+            ExplosionPattern pattern = new ExplosionPattern(DefaultLaunchSpeedY, minSpeed, maxSpeed);
+
+            Vector explosionVelocity = pattern.ExplosionVelocity;
+            float speed = explosionVelocity.X;
+
+            Assert.IsTrue(speed >= minSpeed);
+            Assert.IsTrue(speed <= maxSpeed);
+            Assert.AreEqual(explosionVelocity.X, explosionVelocity.Y);
+        }
     }
 }
