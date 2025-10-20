@@ -59,5 +59,17 @@ namespace FireworksTests
                 () => new ExplosionPattern(DefaultLaunchSpeedY, minSpeed, invalidMaxSpeed)
             );
         }
+
+        [TestMethod]
+        public void LaunchVelocity_ReturnsCorrectVelocity()
+        {
+            float launchSpeedY = -10f;
+            ExplosionPattern pattern = new ExplosionPattern(launchSpeedY, DefaultMinExplosionSpeed, DefaultMaxExplosionSpeed);
+
+            Vector launchVelocity = pattern.LaunchVelocity;
+
+            Assert.AreEqual(0f, launchVelocity.X);
+            Assert.AreEqual(launchSpeedY, launchVelocity.Y);
+        }
     }
 }
