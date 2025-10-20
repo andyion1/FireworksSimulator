@@ -116,5 +116,18 @@ namespace FireworksTests
             Assert.AreEqual(0, env.Fireworks.Count);
         }
 
+        [TestMethod]
+        public void Update_DoesNotRemoveActiveFireworks()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            env.AddFirework(firework);
+
+            env.Update();
+
+            Assert.AreEqual(1, env.Fireworks.Count);
+        }
+
     }
 }
