@@ -56,6 +56,10 @@ namespace FireworksSimulator
 
 
             base.Initialize();
+
+            GraphicsDevice.SetRenderTarget(_renderTarget);
+            GraphicsDevice.Clear(new Color(20, 20, 20));
+            GraphicsDevice.SetRenderTarget(null);
         }
 
         protected override void LoadContent()
