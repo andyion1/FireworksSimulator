@@ -56,6 +56,10 @@ namespace FireworksSimulator
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _fadeTexture = new Texture2D(GraphicsDevice, 1, 1);
+            _fadeTexture.SetData(new[] { Color.White });
+
         }
 
         protected override void Update(GameTime gameTime)
