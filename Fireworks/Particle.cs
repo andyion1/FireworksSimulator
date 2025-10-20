@@ -39,7 +39,7 @@ public Particle(float x, float y, Colour colour, int lifespan)
 
     public void ApplyGravity()
     {
-        Acceleration += new Vector(0, 0.1f);
+        Acceleration += new Vector(0, 0.5f);
     }
 
     public void ApplyVelocity(Vector velocity)
