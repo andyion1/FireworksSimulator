@@ -36,5 +36,12 @@ namespace Fireworks
                 }
             }
         }
+        public void Clear()
+        {
+            if (_fireworks.Count > 50)
+            {
+                _fireworks.Clear();
+            }
+        }
     }
 }
