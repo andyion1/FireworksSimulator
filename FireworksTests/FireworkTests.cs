@@ -209,5 +209,76 @@ namespace FireworksTests
             }
             Assert.IsTrue(allParticlesHaveVelocity);
         }
+
+        [TestMethod]
+        public void Update_AfterExplosion_RemovesExpiredParticles()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            float x = 400f;
+            float y = 500f;
+            int shortLifespan = 1;
+            Firework firework = new Firework(
+                DefaultWidth, DefaultHeight, x, y,
+                DefaultColour, shortLifespan, pattern
+            );
+            firework.Launch();
+            firework.Update();
+            firework.Update();
+            int initialParticleCount = firework.Particles.Count;
+
+            //Update many times to let particles expire
+            for (int i = 0; i < 100; i++)
+            {
+                firework.Update();
+            }
+
+            Assert.IsTrue(firework.Particles.Count < initialParticleCount);
+        }
+
+        [TestMethod]
+        public void Update_AfterAllParticlesExpire_ParticlesListIsEmpty()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            float x = 400f;
+            float y = 500f;
+            int shortLifespan = 1;
+            Firework firework = new Firework(
+                DefaultWidth, DefaultHeight, x, y,
+                DefaultColour, shortLifespan, pattern
+            );
+            firework.Launch();
+            firework.Update();
+            firework.Update();
+
+            // Update enough times for all particles to expire
+            for (int i = 0; i < 200; i++)
+            {
+                firework.Update();
+            }
+
+            Assert.AreEqual(0, firework.Particles.Count);
+        }
+
+        [TestMethod]
+        public void Update_AfterExplosion_ParticlesMove()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            float x = 400f;
+            float y = 500f;
+            int shortLifespan = 1;
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, shortLifespan, pattern);
+            firework.Launch();
+            firework.Update();
+            firework.Update();
+
+            Vector firstParticleInitialPosition = new Vector(
+                firework.Particles[0].Position.X,
+                firework.Particles[0].Position.Y
+            );
+
+            firework.Update();
+
+            Assert.AreNotEqual(firstParticleInitialPosition.X, firework.Particles[0].Position.X);
+        }
     }
 }
