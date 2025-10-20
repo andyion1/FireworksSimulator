@@ -28,7 +28,7 @@ namespace Fireworks
             _maxExplosionSpeed = maxExplosionSpeed;
         }
 
-        public int NumberOfParticles => 60;
+        public int NumberOfParticles => _rng.Next(_minParticles, _maxParticles + 1);
         public Vector ExplosionVelocity => new Vector(3f, 3f);
         public Vector LaunchVelocity => _launchVelocity;
     }
