@@ -44,6 +44,8 @@ namespace FireworksSimulator
             _shapes = new ShapesRenderer(GraphicsDevice);
             _sprites = new SpritesRenderer(GraphicsDevice);
 
+            _env = new FireworkEnvironment();
+
             _particles = new List<Particle>();
             _random = new Random();
 
