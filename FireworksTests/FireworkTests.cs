@@ -137,5 +137,17 @@ namespace FireworksTests
 
             Assert.AreEqual(0, firework.Particles.Count);
         }
+
+        [TestMethod]
+        public void Update_BeforeExplosion_ExplodedRemainsFalse()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            firework.Launch();
+
+            firework.Update();
+
+            Assert.IsFalse(firework.Exploded);
+        }
     }
 }
