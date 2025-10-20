@@ -17,19 +17,24 @@ namespace Fireworks
         private readonly float _minExplosionSpeed;
         private readonly float _maxExplosionSpeed;
 
-        public ExplosionPattern(float launchSpeedY, int minParticles, int maxParticles, float minExplosionSpeed, float maxExplosionSpeed)
+        public ExplosionPattern(float launchSpeedY, float minExplosionSpeed, float maxExplosionSpeed)
         {
-            if (minParticles < 1) throw new ArgumentOutOfRangeException(nameof(minParticles));
-            if (maxParticles < minParticles) throw new ArgumentOutOfRangeException(nameof(maxParticles));
-            if (minExplosionSpeed <= 0) throw new ArgumentOutOfRangeException(nameof(minExplosionSpeed));
-            if (maxExplosionSpeed < minExplosionSpeed) throw new ArgumentOutOfRangeException(nameof(maxExplosionSpeed));
-
+            if (minExplosionSpeed <= 0)
+                throw new ArgumentOutOfRangeException(nameof(minExplosionSpeed));
+            if (maxExplosionSpeed < minExplosionSpeed)
+                throw new ArgumentOutOfRangeException(nameof(maxExplosionSpeed));
 
             _rng = new Random();
 
+            _minParticles = 60;
+            _maxParticles = 100;
+
+            if (_minParticles < 1)
+                throw new ArgumentOutOfRangeException(nameof(_minParticles));
+            if (_maxParticles < _minParticles)
+                throw new ArgumentOutOfRangeException(nameof(_maxParticles));
+
             _launchVelocity = new Vector(0f, launchSpeedY);
-            _minParticles = minParticles;
-            _maxParticles = maxParticles;
             _minExplosionSpeed = minExplosionSpeed;
             _maxExplosionSpeed = maxExplosionSpeed;
         }
