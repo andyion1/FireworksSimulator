@@ -64,5 +64,17 @@ namespace FireworksTests
             Assert.AreEqual(x, firework.Launcher.Position.X);
             Assert.AreEqual(y, firework.Launcher.Position.Y);
         }
+
+        [TestMethod]
+        public void Constructor_FullVersion_NullPattern_ThrowsArgumentNullException()
+        {
+            float x = 400f;
+            float y = 500f;
+            IExplosionPattern nullPattern = null;
+
+            Assert.ThrowsException<ArgumentNullException>(
+                () => new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, DefaultLifespan, nullPattern)
+            );
+        }
     }
 }
