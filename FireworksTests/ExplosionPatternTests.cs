@@ -83,5 +83,16 @@ namespace FireworksTests
             Assert.AreEqual(velocity1.X, velocity2.X);
             Assert.AreEqual(velocity1.Y, velocity2.Y);
         }
+
+        [TestMethod]
+        public void NumberOfParticles_ReturnsValueInValidRange()
+        {
+            ExplosionPattern pattern = new ExplosionPattern(DefaultLaunchSpeedY, DefaultMinExplosionSpeed, DefaultMaxExplosionSpeed);
+
+            int particleCount = pattern.NumberOfParticles;
+
+            Assert.IsTrue(particleCount >= 60);
+            Assert.IsTrue(particleCount <= 100);
+        }
     }
 }
