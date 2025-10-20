@@ -14,5 +14,14 @@ namespace Fireworks
         {
             _fireworks = new List<IFirework>();
         }
+
+        public void AddFirework(IFirework f)
+        {
+            if (f == null)
+                throw new ArgumentNullException(nameof(f));
+
+            f.Launch();
+            _fireworks.Add(f);
+        }
     }
 }
