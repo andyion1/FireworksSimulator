@@ -49,5 +49,20 @@ namespace FireworksTests
                 () => new Firework(DefaultWidth, DefaultHeight, DefaultColour, nullPattern)
             );
         }
+
+        [TestMethod]
+        public void Constructor_FullVersion_CreatesFireworkAtSpecifiedPosition()
+        {
+            float x = 400f;
+            float y = 500f;
+            IExplosionPattern pattern = CreateDefaultPattern();
+
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, DefaultLifespan, pattern);
+
+            Assert.IsNotNull(firework);
+            Assert.IsNotNull(firework.Launcher);
+            Assert.AreEqual(x, firework.Launcher.Position.X);
+            Assert.AreEqual(y, firework.Launcher.Position.Y);
+        }
     }
 }
