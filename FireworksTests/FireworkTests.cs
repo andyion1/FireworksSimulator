@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fireworks;
 using ShapeLibrary;
 
 namespace FireworksTests
@@ -17,5 +18,14 @@ namespace FireworksTests
         private float DefaultLaunchSpeedY = -8f;
         private float DefaultMinExplosionSpeed = 2.5f;
         private float DefaultMaxExplosionSpeed = 6.5f;
+
+        private IExplosionPattern CreateDefaultPattern()
+        {
+            return new ExplosionPattern(
+                DefaultLaunchSpeedY,
+                DefaultMinExplosionSpeed,
+                DefaultMaxExplosionSpeed
+            );
+        }
     }
 }
