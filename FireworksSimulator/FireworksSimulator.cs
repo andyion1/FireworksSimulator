@@ -67,11 +67,37 @@ namespace FireworksSimulator
             ICustomMouse mouse = CustomMouse.Instance;
             mouse.Update();
 
+            ICustomKeyboard keyboard = CustomKeyboard.Instance;
+            keyboard.Update();
+
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 Exit();
             }
+
+            if (keyboard.IsKeyClicked(Keys.Space))
+            {
+                Random rnd = _random;
+                if (rnd == null)
+                    rnd = new Random();
+                _random = rnd;
+
+                Colour colour = new Colour(
+                    (byte)rnd.Next(32, 256),
+                    (byte)rnd.Next(32, 256),
+                    (byte)rnd.Next(32, 256)
+                );
+
+                ExplosionPattern pattern = new ExplosionPattern(-8f, 2.5f, 6.5f);
+
+                Firework fw = new Firework(_screen.Width, _screen.Height, colour, pattern);
+                _env.AddFirework(fw);
+
+                _env.Clear();
+            }
+
 
             if (mouse.IsLeftButtonClicked())
             {
@@ -120,6 +146,7 @@ namespace FireworksSimulator
                 _shapesList.Clear();
             }
 
+            _env.Update();
             base.Update(gameTime);
         }
 

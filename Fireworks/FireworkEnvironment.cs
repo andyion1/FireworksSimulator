@@ -15,6 +15,12 @@ namespace Fireworks
             _fireworks = new List<IFirework>();
         }
 
+        public List<IFirework> Fireworks
+        {
+            get { return _fireworks; }
+        }
+
+
         public void AddFirework(IFirework f)
         {
             if (f == null)
