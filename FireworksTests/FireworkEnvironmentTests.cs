@@ -42,5 +42,16 @@ namespace FireworksTests
             Assert.IsTrue(env.Fireworks.Contains(firework));
         }
 
+        [TestMethod]
+        public void AddFirework_NullFirework_ThrowsArgumentNullException()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IFirework nullFirework = null;
+
+            Assert.ThrowsException<ArgumentNullException>(
+                () => env.AddFirework(nullFirework)
+            );
+        }
+
     }
 }
