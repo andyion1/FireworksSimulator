@@ -71,5 +71,17 @@ namespace FireworksTests
             Assert.AreEqual(0f, launchVelocity.X);
             Assert.AreEqual(launchSpeedY, launchVelocity.Y);
         }
+
+        [TestMethod]
+        public void LaunchVelocity_ConsistentAcrossMultipleCalls()
+        {
+            ExplosionPattern pattern = new ExplosionPattern(DefaultLaunchSpeedY, DefaultMinExplosionSpeed, DefaultMaxExplosionSpeed);
+
+            Vector velocity1 = pattern.LaunchVelocity;
+            Vector velocity2 = pattern.LaunchVelocity;
+
+            Assert.AreEqual(velocity1.X, velocity2.X);
+            Assert.AreEqual(velocity1.Y, velocity2.Y);
+        }
     }
 }
