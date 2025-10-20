@@ -167,6 +167,22 @@ namespace FireworksSimulator
                 _shapes.DrawShape(particle.Circle, 2f);
             }
 
+            foreach (IFirework fw in _env.Fireworks)
+            {
+                if (!fw.Exploded)
+                {
+                    _shapes.DrawShape(fw.Launcher.Circle, 2f);
+                }
+                else
+                {
+                    foreach (IParticle p in fw.Particles)
+                    {
+                        _shapes.DrawShape(p.Circle, 2f);
+                    }
+                }
+            }
+
+
             _shapes.End();
             _screen.UnSet();
 
