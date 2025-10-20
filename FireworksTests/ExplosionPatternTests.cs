@@ -109,5 +109,16 @@ namespace FireworksTests
             Assert.IsTrue(speed <= maxSpeed);
             Assert.AreEqual(explosionVelocity.X, explosionVelocity.Y);
         }
+
+        [TestMethod]
+        public void ExplosionVelocity_NegativeValues_ReturnsPositiveSpeed()
+        {
+            ExplosionPattern pattern = new ExplosionPattern(DefaultLaunchSpeedY, DefaultMinExplosionSpeed, DefaultMaxExplosionSpeed);
+
+            Vector explosionVelocity = pattern.ExplosionVelocity;
+
+            Assert.IsTrue(explosionVelocity.X > 0);
+            Assert.IsTrue(explosionVelocity.Y > 0);
+        }
     }
 }
