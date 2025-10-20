@@ -37,7 +37,9 @@ namespace FireworksSimulator
         protected override void Initialize()
         {
             _shapesList = new List<IShape>();
-            _renderTarget = new RenderTarget2D(GraphicsDevice, 800, 600);
+            _renderTarget = new RenderTarget2D(GraphicsDevice, 800, 600, false, SurfaceFormat.Color,
+                                                DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
+
             _screen = new Screen(_renderTarget);
             _shapes = new ShapesRenderer(GraphicsDevice);
             _sprites = new SpritesRenderer(GraphicsDevice);
