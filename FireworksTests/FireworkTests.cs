@@ -39,5 +39,15 @@ namespace FireworksTests
             Assert.IsNotNull(firework.Launcher);
             Assert.IsFalse(firework.Exploded);
         }
+
+        [TestMethod]
+        public void Constructor_NullPattern_ThrowsArgumentNullException()
+        {
+            IExplosionPattern nullPattern = null;
+
+            Assert.ThrowsException<ArgumentNullException>(
+                () => new Firework(DefaultWidth, DefaultHeight, DefaultColour, nullPattern)
+            );
+        }
     }
 }
