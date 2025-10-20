@@ -149,5 +149,21 @@ namespace FireworksTests
 
             Assert.IsFalse(firework.Exploded);
         }
+
+        [TestMethod]
+        public void Update_WhenLauncherExpires_FireworkExplodes()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            float x = 400f;
+            float y = 500f;
+            int shortLifespan = 1;
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, x, y, DefaultColour, shortLifespan, pattern);
+            firework.Launch();
+
+            firework.Update();
+            firework.Update();
+
+            Assert.IsTrue(firework.Exploded);
+        }
     }
 }
