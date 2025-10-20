@@ -1,4 +1,4 @@
-﻿using ShapeLib;
+﻿using ShapeLibrary;
 
 namespace Fireworks
 {
