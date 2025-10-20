@@ -99,5 +99,17 @@ namespace FireworksTests
             Assert.IsNotNull(firework.Particles);
             Assert.AreEqual(0, firework.Particles.Count);
         }
+
+        [TestMethod]
+        public void Launch_AppliesVelocityToLauncher()
+        {
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            Vector initialVelocity = new Vector(firework.Launcher.Velocity.X, firework.Launcher.Velocity.Y);
+
+            firework.Launch();
+
+            Assert.AreNotEqual(initialVelocity.Y, firework.Launcher.Velocity.Y);
+        }
     }
 }
