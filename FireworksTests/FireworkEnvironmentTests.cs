@@ -144,5 +144,65 @@ namespace FireworksTests
             Assert.AreEqual(2, env.Fireworks.Count);
         }
 
+        [TestMethod]
+        public void Clear_WhenFireworksExceed50_ClearsAll()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+
+            for (int i = 0; i < 51; i++)
+            {
+                IFirework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+                env.AddFirework(firework);
+            }
+
+            env.Clear();
+
+            Assert.AreEqual(0, env.Fireworks.Count);
+        }
+
+        [TestMethod]
+        public void Clear_WhenFireworksBelow50_DoesNotClear()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+
+            for (int i = 0; i < 30; i++)
+            {
+                IFirework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+                env.AddFirework(firework);
+            }
+
+            env.Clear();
+
+            Assert.AreEqual(30, env.Fireworks.Count);
+        }
+
+        [TestMethod]
+        public void Clear_Exactly50Fireworks_DoesNotClear()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+
+            for (int i = 0; i < 50; i++)
+            {
+                IFirework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+                env.AddFirework(firework);
+            }
+
+            env.Clear();
+
+            Assert.AreEqual(50, env.Fireworks.Count);
+        }
+
+        [TestMethod]
+        public void Clear_EmptyList_DoesNotThrowException()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+
+            env.Clear();
+            Assert.AreEqual(0, env.Fireworks.Count);
+        }
+
     }
 }
