@@ -184,6 +184,12 @@ namespace FireworksSimulator
 
 
             _shapes.End();
+
+            _sprites.Begin(true);
+            _sprites.Draw(_fadeTexture, new Rectangle(0, 0, _screen.Width, _screen.Height), Color.Black * 0.1f);
+            _sprites.End();
+
+
             _screen.UnSet();
 
             _screen.Present(_sprites);
