@@ -80,5 +80,19 @@ namespace FireworksTests
             Assert.AreEqual(2, env.Fireworks.Count);
         }
 
+        [TestMethod]
+        public void Update_UpdatesAllFireworks()
+        {
+            FireworkEnvironment env = new FireworkEnvironment();
+            IExplosionPattern pattern = CreateDefaultPattern();
+            Firework firework = new Firework(DefaultWidth, DefaultHeight, DefaultColour, pattern);
+            env.AddFirework(firework);
+            Vector initialPosition = new Vector(firework.Launcher.Position.X, firework.Launcher.Position.Y);
+
+            env.Update();
+
+            Assert.AreNotEqual(initialPosition.Y, firework.Launcher.Position.Y);
+        }
+
     }
 }
