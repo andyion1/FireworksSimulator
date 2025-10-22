@@ -29,10 +29,11 @@ namespace DrawingLibrary.Graphics
             _width = _renderTarget.Width;
         }
 
+        // expose screen dimensions
         public int Height => _height;
-
         public int Width => _width;
 
+        // draws the render target content onto the window
         public void Present(ISpritesRenderer spritesRenderer, bool textureFiltering = true)
         {
             if (spritesRenderer == null)
@@ -46,6 +47,7 @@ namespace DrawingLibrary.Graphics
             spritesRenderer.End();
         }
 
+        // keeps the aspect ratio when resizing window
         public Rectangle CalculateDestinationRectangle()
         {
             int windowWidth = _graphicsDevice.Viewport.Width;
@@ -76,6 +78,7 @@ namespace DrawingLibrary.Graphics
             return new Rectangle(sX, sY, destinationWidth, destinationHeight);
         }
 
+        // activates this render target for drawing
         public void Set()
         {
             if (_isRenderTargetSet)
@@ -87,7 +90,7 @@ namespace DrawingLibrary.Graphics
             _isRenderTargetSet = true;
         }
 
-
+        // unbinds the render target
         public void UnSet()
         {
             if (!_isRenderTargetSet)
@@ -98,7 +101,6 @@ namespace DrawingLibrary.Graphics
             _graphicsDevice.SetRenderTarget(null);
             _isRenderTargetSet = false;
         }
-
 
         public void Dispose()
         {

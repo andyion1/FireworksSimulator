@@ -19,18 +19,16 @@ namespace Fireworks
         public IParticle Launcher { get; private set; }
         public List<IParticle> Particles { get; private set; }
 
-
         public Firework(int width, int height, Colour colour, IExplosionPattern pattern)
         {
             if (pattern == null)
-            {
                 throw new ArgumentNullException("Explosion pattern cannot be null.");
-            }
 
             _width = width;
             _height = height;
             _pattern = pattern;
 
+            // launcher starts from bottom of screen
             float x = _rng.Next(0, width);
             float y = height;
             int lifespan = _rng.Next(35, 90);
@@ -41,9 +39,7 @@ namespace Fireworks
         public Firework(int width, int height, float x, float y, Colour colour, int lifespan, IExplosionPattern pattern)
         {
             if (pattern == null)
-            {
                 throw new ArgumentNullException("Explosion pattern cannot be null.");
-            }
 
             _width = width;
             _height = height;
@@ -52,6 +48,7 @@ namespace Fireworks
             Launcher = ParticleFactory.Create(x, y, colour, lifespan);
         }
 
+        // start the launch movement
         public void Launch()
         {
             Exploded = false;
@@ -63,13 +60,14 @@ namespace Fireworks
             Launcher.ApplyVelocity(_pattern.LaunchVelocity);
         }
 
-
+        // updates firework physics and handles explosion
         public void Update()
         {
             if (!Exploded)
             {
                 Launcher.Update();
 
+                // explode once launcher finishes lifespan
                 if (Launcher.Done)
                 {
                     Exploded = true;
@@ -97,6 +95,7 @@ namespace Fireworks
                 return;
             }
 
+            // update all particles after explosion
             for (int i = Particles.Count - 1; i >= 0; i--)
             {
                 Particles[i].ApplyGravity();
@@ -105,10 +104,5 @@ namespace Fireworks
                     Particles.RemoveAt(i);
             }
         }
-
-
-
-
-
     }
 }

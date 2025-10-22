@@ -3,16 +3,9 @@ using DrawingLibrary.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
 namespace DrawingLibrary.Input
 {
-
     public class CustomMouse : ICustomMouse
     {
         private MouseState _current;
@@ -20,6 +13,7 @@ namespace DrawingLibrary.Input
 
         private static CustomMouse _instance;
 
+        // Singleton pattern to have one global mouse handler
         public static CustomMouse Instance
         {
             get
@@ -32,6 +26,7 @@ namespace DrawingLibrary.Input
             }
         }
 
+        // current mouse position on window
         public Point WindowPosition
         {
             get
@@ -46,41 +41,31 @@ namespace DrawingLibrary.Input
             _previous = _current;
         }
 
-        public bool IsLeftButtonDown()
-        {
-            return _current.LeftButton == ButtonState.Pressed;
-        }
+        // button states
+        public bool IsLeftButtonDown() => _current.LeftButton == ButtonState.Pressed;
+        public bool IsLeftButtonUp() => _current.LeftButton == ButtonState.Released;
 
-        public bool IsLeftButtonUp()
-        {
-            return _current.LeftButton == ButtonState.Released;
-        }
-
+        // detects a left-click (pressed this frame)
         public bool IsLeftButtonClicked()
         {
             return _current.LeftButton == ButtonState.Pressed && _previous.LeftButton == ButtonState.Released;
         }
 
-        public bool IsMiddleButtonDown()
-        {
-            return _current.MiddleButton == ButtonState.Pressed;
-        }
+        public bool IsMiddleButtonDown() => _current.MiddleButton == ButtonState.Pressed;
 
         public bool IsMiddleButtonClicked()
         {
             return _current.MiddleButton == ButtonState.Pressed && _previous.MiddleButton == ButtonState.Released;
         }
 
-        public bool IsRightButtonDown()
-        {
-            return _current.RightButton == ButtonState.Pressed;
-        }
+        public bool IsRightButtonDown() => _current.RightButton == ButtonState.Pressed;
 
         public bool IsRightButtonClicked()
         {
             return _current.RightButton == ButtonState.Pressed && _previous.RightButton == ButtonState.Released;
         }
 
+        // converts window coordinates to screen coordinates
         public Vector2? GetScreenPosition(IScreen screen)
         {
             if (screen == null)
@@ -93,11 +78,13 @@ namespace DrawingLibrary.Input
             int mx = _current.X;
             int my = _current.Y;
 
+            // ignore if mouse outside the screen area
             if (!targetArea.Contains(mx, my))
             {
                 return null;
             }
 
+            // map position to the render target scale
             float offsetX = mx - targetArea.X;
             float offsetY = my - targetArea.Y;
 
@@ -110,7 +97,7 @@ namespace DrawingLibrary.Input
             return new Vector2(gameResX, gameResY);
         }
 
-
+        // update state every frame
         public void Update()
         {
             _previous = _current;

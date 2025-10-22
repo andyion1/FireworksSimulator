@@ -9,11 +9,12 @@ namespace ShapeLibrary
 {
     public static class ShapesFactory
     {
+        // helper methods to create shape instances
+
         public static ICircle CreateCircle(float x, float y, float radius, Colour colour)
         {
             return new Circle(x, y, radius, colour);
         }
-
 
         public static IRectangle CreateRectangle(float x, float y, float width, float height, Colour colour)
         {

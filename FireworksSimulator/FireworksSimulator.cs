@@ -36,6 +36,7 @@ namespace FireworksSimulator
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
+            // setup window
             Window.AllowUserResizing = true;
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
@@ -45,8 +46,8 @@ namespace FireworksSimulator
         protected override void Initialize()
         {
             _shapesList = new List<IShape>();
-            _renderTarget = new RenderTarget2D(GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color,
-                                                DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
+            _renderTarget = new RenderTarget2D(GraphicsDevice, ScreenWidth, ScreenHeight, false,
+                SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
 
             _screen = new Screen(_renderTarget);
             _shapes = new ShapesRenderer(GraphicsDevice);
@@ -57,9 +58,9 @@ namespace FireworksSimulator
             _particles = new List<Particle>();
             _random = new Random();
 
-
             base.Initialize();
 
+            // clear the render target once at start
             GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(new Color(20, 20, 20));
             GraphicsDevice.SetRenderTarget(null);
@@ -69,9 +70,9 @@ namespace FireworksSimulator
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // small 1x1 texture used for fading background
             _fadeTexture = new Texture2D(GraphicsDevice, 1, 1);
             _fadeTexture.SetData(new[] { Color.White });
-
         }
 
         protected override void Update(GameTime gameTime)
@@ -82,18 +83,17 @@ namespace FireworksSimulator
             ICustomKeyboard keyboard = CustomKeyboard.Instance;
             keyboard.Update();
 
-
+            // exit shortcut
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 Exit();
             }
 
+            // spacebar triggers a random firework
             if (keyboard.IsKeyClicked(Keys.Space))
             {
-                Random rnd = _random;
-                if (rnd == null)
-                    rnd = new Random();
+                Random rnd = _random ?? new Random();
                 _random = rnd;
 
                 Colour colour = new Colour(
@@ -110,7 +110,7 @@ namespace FireworksSimulator
                 _env.Clear();
             }
 
-
+            // left click creates single free particle
             if (mouse.IsLeftButtonClicked())
             {
                 Vector2? position = mouse.GetScreenPosition(_screen);
@@ -132,6 +132,7 @@ namespace FireworksSimulator
                 }
             }
 
+            // update standalone particles
             foreach (Particle particle in _particles)
             {
                 particle.ApplyGravity();
@@ -141,7 +142,7 @@ namespace FireworksSimulator
             // remove expired ones
             _particles.RemoveAll(p => p.Done);
 
-
+            // right click spawns rectangles
             if (mouse.IsRightButtonClicked())
             {
                 Vector2? position = mouse.GetScreenPosition(_screen);
@@ -153,6 +154,7 @@ namespace FireworksSimulator
                 }
             }
 
+            // middle click clears all shapes
             if (mouse.IsMiddleButtonClicked())
             {
                 _shapesList.Clear();
@@ -165,19 +167,22 @@ namespace FireworksSimulator
         protected override void Draw(GameTime gameTime)
         {
             _screen.Set();
-         
+
             _shapes.Begin();
 
+            // draw rectangles
             foreach (IShape shape in _shapesList)
             {
                 _shapes.DrawShape(shape, 2.5f);
             }
 
+            // draw manual particles
             foreach (Particle particle in _particles)
             {
                 _shapes.DrawShape(particle.Circle, 2f);
             }
 
+            // draw fireworks
             foreach (IFirework fw in _env.Fireworks)
             {
                 if (!fw.Exploded)
@@ -193,18 +198,17 @@ namespace FireworksSimulator
                 }
             }
 
-
             _shapes.End();
 
+            // overlay a semi-transparent black layer for fading effect
             _sprites.Begin(true);
             _sprites.Draw(_fadeTexture, new Rectangle(0, 0, _screen.Width, _screen.Height), Color.Black * 0.1f);
             _sprites.End();
 
-
             _screen.UnSet();
 
+            // finally render to the actual window
             _screen.Present(_sprites);
         }
-
     }
 }

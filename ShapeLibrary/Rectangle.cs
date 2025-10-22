@@ -24,6 +24,7 @@ namespace ShapeLibrary
             {
                 if (_vertices == null)
                 {
+                    // four corners of the rectangle in clockwise order
                     _vertices = new List<Vector>(4)
                     {
                         new Vector(X, Y),
@@ -33,9 +34,7 @@ namespace ShapeLibrary
                     };
 
                     if (_vertices.Count != 4)
-                    {
                         throw new InvalidOperationException("Rectangle must always have exactly 4 vertices.");
-                    }
                 }
 
                 return _vertices;
@@ -45,25 +44,20 @@ namespace ShapeLibrary
         public Rectangle(float x, float y, float width, float height, Colour colour)
         {
             if (width <= 0)
-            {
                 throw new ArgumentException("Width cannot be less or equal to 0");
-            }
 
             if (height <= 0)
-            {
                 throw new ArgumentException("Height cannot be less or equal to 0");
-            }
 
             if (colour == null)
-            {
                 throw new ArgumentNullException(nameof(colour), "The Colour cannot be null.");
-            }
 
             X = x;
             Y = y;
-            Width= width;
-            Height = height;    
+            Width = width;
+            Height = height;
             Colour = colour;
         }
     }
 }
+

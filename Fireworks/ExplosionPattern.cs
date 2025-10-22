@@ -26,20 +26,19 @@ namespace Fireworks
 
             _rng = new Random();
 
+            // particle count range per explosion
             _minParticles = 60;
             _maxParticles = 100;
-
-            if (_minParticles < 1)
-                throw new ArgumentOutOfRangeException(nameof(_minParticles));
-            if (_maxParticles < _minParticles)
-                throw new ArgumentOutOfRangeException(nameof(_maxParticles));
 
             _launchVelocity = new Vector(0f, launchSpeedY);
             _minExplosionSpeed = minExplosionSpeed;
             _maxExplosionSpeed = maxExplosionSpeed;
         }
 
+        // random number of particles each explosion
         public int NumberOfParticles => _rng.Next(_minParticles, _maxParticles + 1);
+
+        // random explosion velocity between min/max
         public Vector ExplosionVelocity
         {
             get
@@ -49,7 +48,7 @@ namespace Fireworks
             }
         }
 
+        // launch velocity of the firework going up
         public Vector LaunchVelocity => _launchVelocity;
     }
-
 }
