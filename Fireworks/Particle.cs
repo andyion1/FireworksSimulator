@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ShapeLibrary;
+using Fireworks;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("FireworksTests")]
+[assembly: InternalsVisibleTo("FireworksSimulator")]
+
+namespace Fireworks
+{
+    internal class Particle : IParticle
+    {
+        private int _lifespan;
+        private bool _done;
+
+        public Vector Acceleration { get; private set; }
+        public Vector Velocity { get; private set; }
+        public Vector Position { get; private set; }
+        public ICircle Circle { get; private set; }
+        public Colour Colour { get; private set; }
+        public bool Done => _done;
+
+        public Particle(float x, float y, Colour colour, int lifespan)
+        {
+            Position = new Vector(x, y);
+            Colour = colour;
+            _lifespan = lifespan;
+
+            // small circle for rendering
+            Circle = new Circle(x, y, 2f, colour);
+
+            Acceleration = new Vector(0, 0);
+            Velocity = new Vector(0, 0);
+        }
+
+        // adds gravity to the acceleration
+        public void ApplyGravity()
+        {
+            Acceleration += new Vector(0, 0.5f);
+        }
+
+        // adds velocity from external forces (like explosion)
+        public void ApplyVelocity(Vector velocity)
+        {
+            Velocity += velocity;
+        }
+
+        // update position and lifespan
+        public void Update()
+        {
+            if (_done)
+                return;
+
+            Velocity += Acceleration;
+            Position += Velocity;
+
+            _lifespan--;
+
+            // mark as done when lifespan runs out
+            if (_lifespan <= 0)
+            {
+                _done = true;
+                return;
+            }
+
+            // reset acceleration and update its shape
+            Acceleration = new Vector(0, 0);
+            Circle = new Circle(Position.X, Position.Y, 2f, Colour);
+        }
+    }
+}
