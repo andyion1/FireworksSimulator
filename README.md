@@ -1,8 +1,11 @@
 ## Fireworks Simulator
 
-Monogame C# application running on NET 8.0
+MonoGame C# application running on .NET 8.0
 
 An interactive fireworks display simulator featuring particle physics, gravity effects, and customizable explosion patterns.
+
+![Fireworks Simulation Demo](Demonstration/FireworksSimulation.gif)
+
 
 ### Softwares/Libraries used
 
@@ -11,18 +14,19 @@ An interactive fireworks display simulator featuring particle physics, gravity e
 - MonoGame Framework
 
 ### Building the Project
-1. Clone this repository from the GitLab 510 group, section 1 group, ionita group
+1. Clone this repository from the **GitHub repository**
 2. Open the solution in Visual Studio 2022
-4. Build the solution & run it
+3. Build the solution & run it
 
 ### Running the Application
 
-**Option 2: Download from CI Pipeline**
-1. Go to the GitLab repository
-2. Navigate to CI/CD -> Pipelines
-3. Select the latest successful pipeline
-4. Download the `artifacts` from the `build:release` job
-5. Unzip and run `FireworksSimulator.exe`
+**Option 2: Download from GitHub Actions**
+1. Go to this GitHub repository
+2. Click on the **Actions** tab
+3. Select the latest successful workflow run
+4. Scroll down to the **Artifacts** section
+5. Download the `build-release` artifact
+6. Unzip and run `FireworksSimulator.exe`
 
 ## Controls
 
@@ -43,10 +47,10 @@ An interactive fireworks display simulator featuring particle physics, gravity e
 
 ## Testing
 
-Unit tests are included in the `FireworksTests` and `ShapeLibraryTests` projects. Run tests using Visual Studio Test Explorer or via the CI pipeline.
-
+Unit tests are included in the `FireworksTests` and `ShapeLibraryTests` projects.  
+Run tests using Visual Studio Test Explorer or through GitHub Actions.
 
 ## Credits
 
-Made by Andy Ionita, 2333068
+Made by Andy Ionita, 2333068  
 Programming IV, Dirk Dubois, Section 1
